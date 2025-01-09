@@ -1,0 +1,20 @@
+Concurrency: 
+Concurrency relates to an application that is processing more than one task at the same time. Concurrency is an approach that is used for decreasing the response time of the system by using the single processing unit. Concurrency is creates the illusion of parallelism, however actually the chunks of a task aren’t parallelly processed, but inside the application, there are more than one task is being processed at a time. It doesn’t fully end one task before it begins ensuing. 
+Concurrency is achieved through the interleaving operation of processes on the central processing unit(CPU) or in other words by the context switching. that’s rationale it’s like parallel processing. It increases the amount of work finished at a time. 
+
+ 
+
+
+
+In the above figure, we can see that there is multiple tasks making progress at the same time. This figure shows the concurrency because concurrency is the technique that deals with the lot of things at a time. 
+
+Parallelism: 
+Parallelism is related to an application where  tasks are divided into smaller sub-tasks that are processed seemingly simultaneously or parallel. It is used to increase the throughput and computational speed of the system by using multiple processors. It enables single sequential CPUs to do lot of things “seemingly” simultaneously. 
+
+Parallelism leads to overlapping of central processing units and input-output tasks in one process with the central processing unit and input-output tasks of another process. Whereas in concurrency the speed is increased by overlapping the input-output activities of one process with CPU process of another process. 
+
+ 
+
+
+
+In the above figure, we can see that the tasks are divided into smaller sub-tasks that are processing simultaneously or parallel. This figure shows the parallelism, the technique that runs threads simultaneously. 
