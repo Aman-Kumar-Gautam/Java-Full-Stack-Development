@@ -1,0 +1,103 @@
+Interpolation Search Algorithm
+Interpolation search is an algorithm used for searching for a target value within a sorted array. It improves on the efficiency of binary search by calculating the probable position of the target value based on the values of the elements. This is particularly effective when the values in the array are uniformly distributed.
+
+How Interpolation Search Works
+Calculate Position: Calculate the probable position (pos) of the target value using the formula:pos = low+(target−array[low]/array[high]−array[low])×(high−low)
+
+Here, low and high are the indices of the current search interval.
+Compare and Adjust:
+If array[pos] equals the target, return pos.
+If array[pos] is less than the target, update low to pos + 1.
+If array[pos] is greater than the target, update high to pos - 1.
+Repeat: Repeat the process until low exceeds high or the target value is found.
+Target Not Found: If the target is not found within the interval, return an indication (usually -1) that the target is not in the array.
+Steps in Pseudocode
+Here is the pseudocode for the interpolation search algorithm:
+
+function interpolationSearch(array, target):
+    low = 0
+    high = length(array) - 1
+    
+    while low <= high and target >= array[low] and target <= array[high]:
+        if low == high:
+            if array[low] == target:
+                return low
+            return -1
+        
+        pos = low + ((target - array[low]) * (high - low) // (array[high] - array[low]))
+        
+        if array[pos] == target:
+            return pos
+        if array[pos] < target:
+            low = pos + 1
+        else:
+            high = pos - 1
+    
+    return -1
+Detailed Example
+Let's consider an example to illustrate interpolation search:
+
+Input Array: [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
+Target Value: 70
+Step-by-Step Process:
+
+1. Initial Setup: low = 0, high = 9
+2. Calculate Position:pos = 0+(70−10/100−10​)×(9−0)≈0+(60/90)×9≈6
+3. Compare and Adjust:
+    array[6] = 70, which matches the target, so return index 6.
+
+Implementation in Python
+Here is a simple implementation of interpolation search in Python:
+
+def interpolation_search(array, target):
+    low = 0
+    high = len(array) - 1
+    
+    while low <= high and target >= array[low] and target <= array[high]:
+        if low == high:
+            if array[low] == target:
+                return low
+            return -1
+        
+        # Calculate the probable position of the target value
+        pos = low + ((target - array[low]) * (high - low) // (array[high] - array[low]))
+        
+        if array[pos] == target:
+            return pos
+        if array[pos] < target:
+            low = pos + 1
+        else:
+            high = pos - 1
+    
+    return -1
+
+# Example usage:
+arr = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
+target = 70
+result = interpolation_search(arr, target)
+
+if result != -1:
+    print(f"Element found at index: {result}")
+else:
+    print("Element not found in the array")
+Time and Space Complexity
+Time Complexity: O(log log n) in the best case when the elements are uniformly distributed. In the worst case, it can degrade to O(n) if the distribution is not uniform.
+Space Complexity: O(1), as it uses a constant amount of extra space.
+Use Cases and Limitations
+Use Cases:
+
+Uniformly Distributed Data: Works best on uniformly distributed datasets where the values are evenly spread out.
+Large Data Sets: Effective for large datasets where binary search might be less efficient due to non-uniform distribution.
+Limitations:
+
+Requires Sorted Array: Like binary search, it requires the array to be sorted.
+Non-Uniform Distribution: Performance can degrade significantly if the values are not uniformly distributed.
+Overhead: More complex than binary search due to the position calculation.
+Interpolation search can be a powerful tool for searching in sorted arrays, especially when the data is uniformly distributed. It leverages the distribution of data to predict the position of the target more accurately than binary search, potentially reducing the number of comparisons required. However, its efficiency heavily depends on the nature of the dataset.
+
+
+
+
+
+
+

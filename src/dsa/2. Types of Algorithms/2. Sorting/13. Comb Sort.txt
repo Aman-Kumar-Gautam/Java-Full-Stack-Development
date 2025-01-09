@@ -1,0 +1,94 @@
+
+Comb Sort is a comparison-based sorting algorithm and an improvement over Bubble Sort. It was developed in 1980 by Włodzimierz Dobosiewicz and Artur Borowy, who introduced the concept of shrinking the gap between compared elements in Bubble Sort to enhance its efficiency.
+
+How Comb Sort Works
+Gap Sequence: Comb Sort starts with a large gap between compared elements and gradually reduces the gap in each iteration. The gap is initially set to a large value typically around the size of the array and is reduced by a shrink factor (usually 1.3).
+
+Bubble-like Comparison: Comb Sort compares elements that are far apart and swaps them if they are in the wrong order, similar to Bubble Sort. However, unlike Bubble Sort, which compares adjacent elements, Comb Sort uses a larger gap for comparison.
+
+Shrinking the Gap: After each pass through the array, the gap size is reduced. The process continues until the gap size is reduced to 1, which is when the algorithm performs a final pass using a standard Bubble Sort.
+
+Final Pass: The final pass of Comb Sort is essentially a Bubble Sort with a gap of 1, ensuring that any remaining small inversions are corrected.
+
+Pseudocode for Comb Sort
+Here is a basic pseudocode for Comb Sort:
+
+function combSort(array):
+    n = length(array)
+    gap = n
+    shrink = 1.3
+    sorted = false
+    
+    while not sorted:
+        gap = floor(gap / shrink)
+        if gap <= 1:
+            gap = 1
+            sorted = true
+        
+        i = 0
+        sorted = true
+        while i + gap < n:
+            if array[i] > array[i + gap]:
+                swap(array[i], array[i + gap])
+                sorted = false
+            i = i + 1
+Detailed Example
+Let's consider an example to illustrate Comb Sort:
+
+Input Array: [8, 4, 1, 5, 9, 3, 7, 2, 6]
+Step-by-Step Process:
+
+Initial Setup:
+Input Array: [8, 4, 1, 5, 9, 3, 7, 2, 6]
+Start with gap = 9 (size of the array)
+First Pass (gap = 9):
+Compare elements that are 9 positions apart and swap if necessary:
+[3, 4, 1, 5, 7, 8, 2, 6, 9]
+Subsequent Passes:
+Reduce the gap size using the shrink factor (1.3) until the gap is 1:
+[3, 1, 4, 5, 7, 2, 6, 8, 9]
+[1, 3, 4, 5, 2, 6, 7, 8, 9]
+[1, 3, 4, 2, 5, 6, 7, 8, 9]
+[1, 3, 2, 4, 5, 6, 7, 8, 9]
+[1, 2, 3, 4, 5, 6, 7, 8, 9] (Final sorted array)
+Implementation in Python
+Here is a Python implementation of Comb Sort:
+
+def comb_sort(arr):
+    n = len(arr)
+    gap = n
+    shrink = 1.3
+    sorted = False
+    
+    while not sorted:
+        gap = int(gap / shrink)
+        if gap <= 1:
+            gap = 1
+            sorted = True
+        
+        i = 0
+        sorted = True
+        while i + gap < n:
+            if arr[i] > arr[i + gap]:
+                arr[i], arr[i + gap] = arr[i + gap], arr[i]
+                sorted = False
+            i += 1
+
+# Example usage:
+arr = [8, 4, 1, 5, 9, 3, 7, 2, 6]
+comb_sort(arr)
+print("Sorted array:", arr)
+Time Complexity
+Time Complexity: Average and worst-case time complexity is O(n^2), similar to Bubble Sort. However, in practice, Comb Sort typically performs better than Bubble Sort due to its gap reduction mechanism.
+Space Complexity
+Space Complexity: O(1) - Comb Sort sorts the elements in-place and requires only a constant amount of extra space.
+Use Cases and Limitations
+Use Cases:
+
+Large Unsorted Arrays: Comb Sort is effective for sorting large unsorted arrays.
+General-Purpose Sorting: It can be used as a general-purpose sorting algorithm when a comparison-based sorting algorithm is needed.
+Limitations:
+
+Quadratic Time Complexity: Although it improves upon Bubble Sort, Comb Sort still has a worst-case time complexity of O(n^2), which makes it less efficient than algorithms like Merge Sort or Quick Sort for large datasets.
+Not Stable: Comb Sort is not a stable sorting algorithm.
+Comb Sort is a straightforward improvement over Bubble Sort that aims to reduce the number of inversions quickly by using a variable gap size. It remains a useful algorithm for scenarios where simplicity and in-place sorting are priorities, though more advanced algorithms might be preferred for critical applications requiring optimal time complexity guarantees.

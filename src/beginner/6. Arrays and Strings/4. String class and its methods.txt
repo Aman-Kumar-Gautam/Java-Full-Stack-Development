@@ -1,0 +1,110 @@
+The String class in Java is a fundamental class that represents a sequence of characters. Strings are immutable in Java, meaning once created, their values cannot be changed. The String class provides a rich set of methods for manipulating and working with strings. Here's an overview of the String class, its methods, and how strings can be used in various data structure operations:
+
+Creating Strings
+Strings can be created in Java using string literals or by creating objects of the String class.
+
+String Literals:
+
+String str1 = "Hello"; // Using string literal
+String str2 = "World";
+Using new Keyword:
+
+String str3 = new String("Hello"); // Using new keyword
+String str4 = new String("World");
+String Methods
+1. Length of a String
+The length() method returns the number of characters in the string.
+
+String str = "Hello";
+int length = str.length(); // length will be 5
+
+2. Concatenation
+Strings can be concatenated using the + operator or concat() method.
+
+String str1 = "Hello";
+String str2 = "World";
+String str3 = str1 + " " + str2; // "Hello World"
+String str4 = str1.concat(" ").concat(str2); // "Hello World"
+
+3. Substring
+The substring() method returns a new string that is a substring of the original string.
+
+String str = "Hello World";
+String substr = str.substring(6); // "World"
+String substr2 = str.substring(0, 5); // "Hello"
+
+4. Comparison
+Strings can be compared using equals(), equalsIgnoreCase(), compareTo(), compareToIgnoreCase() methods.
+
+String str1 = "hello";
+String str2 = "Hello";
+boolean isEqual = str1.equals(str2); // false
+boolean isEqualIgnoreCase = str1.equalsIgnoreCase(str2); // true
+int compareResult = str1.compareTo(str2); // returns a negative or positive value based on lexicographical comparison
+
+5. Searching
+Strings provide methods like indexOf(), lastIndexOf(), startsWith(), endsWith() for searching substrings.
+
+String str = "Hello World";
+int index = str.indexOf("World"); // 6
+boolean startsWithHello = str.startsWith("Hello"); // true
+boolean endsWithWorld = str.endsWith("World"); // true
+
+6. Conversion
+Strings can be converted to upper case or lower case using toUpperCase() and toLowerCase() methods.
+
+String str = "Hello World";
+String upperCaseStr = str.toUpperCase(); // "HELLO WORLD"
+String lowerCaseStr = str.toLowerCase(); // "hello world"
+
+7. Splitting
+The split() method splits the string into an array of substrings based on a delimiter.
+
+String str = "apple,orange,banana";
+String[] fruits = str.split(","); // {"apple", "orange", "banana"}
+
+8. Trimming
+The trim() method removes leading and trailing white spaces from the string.
+
+java
+Copy code
+String str = "   Hello World   ";
+String trimmedStr = str.trim(); // "Hello World"
+
+
+Data Structure Operations with Strings
+1. Using Arrays of Strings
+Arrays of strings are commonly used to store collections of strings.
+
+String[] names = {"Alice", "Bob", "Charlie"};
+for (String name : names) {
+    System.out.println(name);
+}
+2. Storing Strings in Collections
+Strings can be stored in various collections like ArrayList, HashSet, etc.
+
+ArrayList<String> namesList = new ArrayList<>();
+namesList.add("Alice");
+namesList.add("Bob");
+namesList.add("Charlie");
+System.out.println(namesList); // [Alice, Bob, Charlie]
+
+
+3. Using Strings in Maps
+Strings can be used as keys or values in HashMap, TreeMap, etc.
+
+HashMap<String, Integer> agesMap = new HashMap<>();
+agesMap.put("Alice", 25);
+agesMap.put("Bob", 30);
+agesMap.put("Charlie", 28);
+System.out.println(agesMap.get("Alice")); // 25
+
+
+Summary
+The String class in Java provides a wide range of methods for manipulating and working with strings. Strings are used extensively in Java programming for various data structure operations such as arrays, collections, and maps. Understanding the String class and its methods is crucial for effective string manipulation and efficient programming in Java.
+
+
+
+
+
+

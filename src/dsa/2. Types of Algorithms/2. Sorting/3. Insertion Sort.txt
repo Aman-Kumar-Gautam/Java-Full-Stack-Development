@@ -1,0 +1,92 @@
+
+Insertion Sort is a simple comparison-based sorting algorithm that builds the final sorted array one item at a time. It iterates through the array and, for each element, it finds its correct position in the already sorted part of the array and shifts all larger elements one position to the right.
+
+How Insertion Sort Works
+Initialization: Start with the second element (index 1) assuming the first element (index 0) is already sorted.
+Compare and Insert:
+For each element, compare it with the elements before it in the sorted portion of the array.
+Shift larger elements one position to the right to make space for the current element.
+Insert the current element into its correct position.
+Repeat: Continue this process until the entire array is sorted.
+Pseudocode for Insertion Sort
+Here is the pseudocode for Insertion Sort:
+
+function insertionSort(array):
+    n = length(array)
+    for i from 1 to n-1:
+        key = array[i]
+        j = i - 1
+        // Move elements of array[0..i-1], that are greater than key, to one position ahead of their current position
+        while j >= 0 and array[j] > key:
+            array[j + 1] = array[j]
+            j = j - 1
+        array[j + 1] = key
+Detailed Example
+Let's consider an example to illustrate Insertion Sort:
+
+Input Array: [64, 25, 12, 22, 11]
+Step-by-Step Process:
+
+Initial Array: [64, 25, 12, 22, 11]
+
+Pass 1:
+
+key = 25
+Compare 25 with 64 (shift 64 to the right)
+Array after pass 1: [25, 64, 12, 22, 11]
+Pass 2:
+
+key = 12
+Compare 12 with 64 (shift 64 to the right), then with 25 (shift 25 to the right)
+Array after pass 2: [12, 25, 64, 22, 11]
+Pass 3:
+
+key = 22
+Compare 22 with 64 (shift 64 to the right), then with 25 (shift 25 to the right)
+Array after pass 3: [12, 22, 25, 64, 11]
+Pass 4:
+
+key = 11
+Compare 11 with 64 (shift 64 to the right), then with 25 (shift 25 to the right), then with 22 (shift 22 to the right), and finally with 12 (shift 12 to the right)
+Array after pass 4: [11, 12, 22, 25, 64]
+Sorted Array: [11, 12, 22, 25, 64]
+
+Implementation in Python
+Here is a Python implementation of Insertion Sort:
+
+def insertion_sort(arr):
+    n = len(arr)
+    
+    # Traverse through 1 to n
+    for i in range(1, n):
+        key = arr[i]
+        j = i - 1
+        
+        # Move elements of arr[0..i-1], that are greater than key, to one position ahead of their current position
+        while j >= 0 and key < arr[j]:
+            arr[j + 1] = arr[j]
+            j -= 1
+        arr[j + 1] = key
+    
+    return arr
+
+# Example usage:
+arr = [64, 25, 12, 22, 11]
+sorted_arr = insertion_sort(arr)
+print("Sorted array:", sorted_arr)
+Time Complexity
+Best Case: O(n) - when the array is already sorted.
+Average Case: O(n^2)
+Worst Case: O(n^2)
+Space Complexity
+Space Complexity: O(1) - Insertion Sort is an in-place sorting algorithm as it does not require any extra space other than the input array.
+Use Cases and Limitations
+Use Cases:
+
+Small Datasets: Sorting small arrays where simplicity and ease of implementation are valued over sorting speed.
+Nearly Sorted Arrays: Performs efficiently on arrays that are nearly sorted.
+Limitations:
+
+Inefficient for Large Datasets: Insertion Sort's quadratic time complexity makes it impractical for sorting large datasets compared to more efficient algorithms like Merge Sort or Quick Sort.
+Not Suitable for Real-Time Applications: Its average and worst-case time complexities make it unsuitable for real-time applications where fast sorting is required.
+Insertion Sort is a fundamental sorting algorithm that is easy to understand and implement. While it is not suitable for large datasets due to its time complexity, it remains useful in educational contexts and for sorting small datasets efficiently.

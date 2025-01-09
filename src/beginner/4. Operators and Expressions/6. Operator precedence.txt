@@ -1,0 +1,155 @@
+Operator precedence determines the order in which operators are evaluated in expressions. In Java, operators with higher precedence are evaluated before operators with lower precedence. If operators have the same precedence, their associativity determines the order of evaluation. Here's a comprehensive list of Java operators in order of precedence from highest to lowest, along with examples:
+
+Operator Precedence and Associativity in Java
+1. Postfix Operators (Highest precedence)
+
+expr++
+expr--
+Associativity: Left to Right
+
+2. Unary Operators
+
+++expr
+--expr
++expr
+-expr
+~
+!
+Associativity: Right to Left
+
+3. Multiplicative Operators
+
+*
+/
+%
+Associativity: Left to Right
+
+4. Additive Operators
+
++
+-
+Associativity: Left to Right
+
+5. Shift Operators
+
+<<
+>>
+>>>
+Associativity: Left to Right
+
+6. Relational Operators
+
+<
+<=
+>
+>=
+Associativity: Left to Right
+
+7. Equality Operators
+
+==
+!=
+Associativity: Left to Right
+
+8. Bitwise AND
+
+&
+Associativity: Left to Right
+
+9. Bitwise XOR
+
+^
+Associativity: Left to Right
+
+10. Bitwise OR
+
+|
+Associativity: Left to Right
+
+11. Logical AND
+
+&&
+Associativity: Left to Right
+
+12. Logical OR
+
+||
+Associativity: Left to Right
+
+13. Ternary Operator
+
+? :
+Associativity: Right to Left
+
+14. Assignment Operators (Lowest precedence)
+
+=
++=
+-=
+*=
+/=
+%=
+&=
+|=
+^=
+<<=
+>>=
+>>>=
+Associativity: Right to Left
+
+
+Examples to Illustrate Operator Precedence
+Example 1:
+
+public class OperatorPrecedence {
+    public static void main(String[] args) {
+        int a = 10;
+        int b = 5;
+        int c = 2;
+        
+        int result = a + b * c; // Multiplication (*) has higher precedence than addition (+)
+        System.out.println("Result: " + result); // Output: Result: 20 (b * c is evaluated first, then a + 10)
+    }
+}
+Example 2:
+
+public class OperatorPrecedence {
+    public static void main(String[] args) {
+        int a = 10;
+        int b = 5;
+        int c = 2;
+        
+        int result = (a + b) * c; // Parentheses change the precedence
+        System.out.println("Result: " + result); // Output: Result: 30 (a + b is evaluated first, then result is multiplied by c)
+    }
+}
+Example 3:
+
+public class OperatorPrecedence {
+    public static void main(String[] args) {
+        int a = 10;
+        int b = 20;
+        int c = 30;
+        
+        boolean result = a < b && b < c; // Relational operators (<) have higher precedence than logical AND (&&)
+        System.out.println("Result: " + result); // Output: Result: true (a < b and b < c are evaluated first, then the logical AND operation)
+    }
+}
+Example 4:
+
+public class OperatorPrecedence {
+    public static void main(String[] args) {
+        int a = 10;
+        int b = 5;
+        
+        int result = a - ++b; // Unary increment operator (++) has higher precedence than subtraction (-)
+        System.out.println("Result: " + result); // Output: Result: 4 (++b is evaluated first, then a - b)
+    }
+}
+Summary
+Operator precedence and associativity rules help determine the order in which parts of an expression are evaluated. When in doubt or when clarity is needed, use parentheses () to explicitly specify the order of operations. This can prevent logical errors and improve the readability of the code.
+
+
+
+
+
