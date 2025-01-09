@@ -1,0 +1,112 @@
+Cocktail Sort, also known as Bidirectional Bubble Sort, is a variation of Bubble Sort that sorts the array in both directions - from the beginning to the end and then from the end to the beginning. This bidirectional approach can improve performance in certain scenarios by allowing larger elements to quickly "bubble" to their correct positions.
+
+How Cocktail Sort Works
+Forward Pass: The algorithm starts by iterating from the beginning of the array to the end. During this pass, it compares adjacent elements and swaps them if they are in the wrong order, moving the larger elements towards the end of the array.
+
+Reverse Pass: After completing the forward pass, Cocktail Sort then performs a reverse pass from the end of the array back to the beginning. During this pass, it compares adjacent elements and swaps them if they are in the wrong order, moving smaller elements towards the beginning of the array.
+
+Repeat: Cocktail Sort continues with these alternating forward and reverse passes until no more elements need to be swapped, indicating that the array is sorted.
+
+Pseudocode for Cocktail Sort
+Here is the pseudocode for Cocktail Sort:
+
+function cocktail_sort(array):
+    n = length(array)
+    swapped = True
+    start = 0
+    end = n - 1
+    
+    while swapped:
+        swapped = False
+        
+        # Forward pass (similar to Bubble Sort)
+        for i in range(start, end):
+            if array[i] > array[i + 1]:
+                array[i], array[i + 1] = array[i + 1], array[i]
+                swapped = True
+        
+        if not swapped:
+            break
+        
+        swapped = False
+        
+        # Reverse pass
+        end -= 1
+        for i in range(end - 1, start - 1, -1):
+            if array[i] > array[i + 1]:
+                array[i], array[i + 1] = array[i + 1], array[i]
+                swapped = True
+        
+        start += 1
+Detailed Example
+Let's consider an example to illustrate Cocktail Sort:
+
+Input Array: [5, 2, 1, 4, 3]
+Step-by-Step Process:
+
+Forward Pass:
+
+Compare adjacent elements from left to right:
+[2, 1, 4, 3, 5]
+[1, 2, 3, 4, 5] (after the first forward pass)
+Reverse Pass:
+
+Compare adjacent elements from right to left:
+[1, 2, 3, 4, 5] (no swaps needed)
+Completion: Since no swaps were made during the reverse pass, the array is sorted.
+
+Implementation in Python
+Here is a Python implementation of Cocktail Sort:
+
+def cocktail_sort(array):
+    n = len(array)
+    swapped = True
+    start = 0
+    end = n - 1
+    
+    while swapped:
+        swapped = False
+        
+        # Forward pass (similar to Bubble Sort)
+        for i in range(start, end):
+            if array[i] > array[i + 1]:
+                array[i], array[i + 1] = array[i + 1], array[i]
+                swapped = True
+        
+        if not swapped:
+            break
+        
+        swapped = False
+        
+        # Reverse pass
+        end -= 1
+        for i in range(end - 1, start - 1, -1):
+            if array[i] > array[i + 1]:
+                array[i], array[i + 1] = array[i + 1], array[i]
+                swapped = True
+        
+        start += 1
+
+# Example usage:
+arr = [5, 2, 1, 4, 3]
+cocktail_sort(arr)
+print("Sorted array:", arr)
+Time Complexity
+Time Complexity: O(n^2) in the worst case, where n is the number of elements in the input array. Cocktail Sort performs similarly to Bubble Sort, but the bidirectional nature can lead to earlier termination in some cases, improving average performance.
+Space Complexity
+Space Complexity: O(1) - Cocktail Sort is an in-place sorting algorithm that requires only a constant amount of extra space.
+Use Cases and Limitations
+Use Cases:
+
+Small Arrays: Cocktail Sort can be effective for sorting small arrays or arrays where elements are already partially sorted.
+Stable Sorting: It is a stable sorting algorithm, meaning it preserves the relative order of equal elements.
+Limitations:
+
+Quadratic Time Complexity: Like Bubble Sort, Cocktail Sort has a worst-case time complexity of O(n^2), making it less suitable for large datasets.
+Not Optimal for All Datasets: It may not perform well on arrays with a large number of inversions or when more efficient sorting algorithms like Quick Sort or Merge Sort would be more appropriate.
+Cocktail Sort is a simple variation of Bubble Sort that can occasionally offer improved performance by quickly moving large elements to their correct positions in both directions. However, its quadratic time complexity limits its efficiency compared to more advanced sorting algorithms for larger datasets.
+
+
+
+
+

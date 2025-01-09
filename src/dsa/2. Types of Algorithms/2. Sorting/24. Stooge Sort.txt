@@ -1,0 +1,111 @@
+
+Stooge Sort is a recursive sorting algorithm that sorts an array in place with a time complexity of O(n log_{3}(2)).which is approximately O(n^2.7095) It's not commonly used in practice due to its inefficiency compared to more efficient sorting algorithms like Quick Sort or Merge Sort. However, it serves as an interesting example of a recursive sorting algorithm.
+
+How Stooge Sort Works
+Stooge Sort operates by recursively sorting the first two-thirds and the last two-thirds of the array, and then recursively sorting the first two-thirds again. Here's a step-by-step explanation:
+
+Base Case: If the value at the start of the array is greater than the value at the end, swap them.
+
+Recursive Case: If there are three or more elements in the array:
+
+Recursively sort the first two-thirds of the array.
+Recursively sort the last two-thirds of the array.
+Recursively sort the first two-thirds of the array again to ensure that the entire array is sorted.
+Pseudocode for Stooge Sort
+Here is the pseudocode for Stooge Sort:
+
+function stoogeSort(array, start, end):
+    if array[start] > array[end]:
+        swap(array[start], array[end])
+
+    if end - start + 1 > 2:
+        third = (end - start + 1) / 3
+        
+        stoogeSort(array, start, end - third)
+        stoogeSort(array, start + third, end)
+        stoogeSort(array, start, end - third)
+Example Execution
+Let's consider an example to illustrate Stooge Sort:
+
+Input Array: [3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5]
+Step-by-Step Process:
+
+Initial Call: stoogeSort(array, 0, 10)
+
+Recursive Calls:
+
+First Recursive Call: stoogeSort(array, 0, 7)
+
+Compare and swap array[0] and array[7] (3 and 2).
+Recursively sort stoogeSort(array, 0, 5).
+Recursively sort stoogeSort(array, 3, 7).
+Recursively sort stoogeSort(array, 0, 5).
+Second Recursive Call: stoogeSort(array, 3, 10)
+
+Compare and swap array[3] and array[10] (1 and 5).
+Recursively sort stoogeSort(array, 3, 8).
+Recursively sort stoogeSort(array, 6, 10).
+Recursively sort stoogeSort(array, 3, 8).
+Third Recursive Call: stoogeSort(array, 0, 7)
+
+Compare and swap array[0] and array[7] (2 and 1).
+Recursively sort stoogeSort(array, 0, 5).
+Recursively sort stoogeSort(array, 3, 7).
+Recursively sort stoogeSort(array, 0, 5).
+Final Sorted Array: [1, 1, 2, 3, 3, 4, 5, 5, 5, 6, 9]
+
+Implementation in C++
+Here is a C++ implementation of Stooge Sort:
+
+#include <iostream>
+#include <vector>
+
+void stoogeSort(std::vector<int>& array, int start, int end) {
+    if (array[start] > array[end]) {
+        std::swap(array[start], array[end]);
+    }
+
+    if (end - start + 1 > 2) {
+        int third = (end - start + 1) / 3;
+        
+        stoogeSort(array, start, end - third);
+        stoogeSort(array, start + third, end);
+        stoogeSort(array, start, end - third);
+    }
+}
+
+int main() {
+    std::vector<int> array = {3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5};
+
+    std::cout << "Original array: ";
+    for (int num : array) {
+        std::cout << num << " ";
+    }
+    std::cout << "\n";
+
+    stoogeSort(array, 0, array.size() - 1);
+
+    std::cout << "Sorted array: ";
+    for (int num : array) {
+        std::cout << num << " ";
+    }
+    std::cout << "\n";
+
+    return 0;
+}
+Explanation
+stoogeSort Function: Implements Stooge Sort recursively. It swaps elements if necessary and recursively sorts the first two-thirds and last two-thirds of the array.
+
+Main Function: Initializes an array, calls stoogeSort() to sort it, and then prints the sorted array.
+
+Time Complexity
+Time Complexity: O(n^(log3 / log1.5)), which simplifies to approximately O(n^2.7095). This makes Stooge Sort less efficient than many other sorting algorithms, including those with O(n log n) complexity like Quick Sort or Merge Sort.
+Use Cases and Limitations
+Use Cases:
+
+Stooge Sort can be used to demonstrate recursive sorting algorithms and is sometimes used in educational settings to understand recursion and sorting.
+Limitations:
+
+Inefficiency: It's inefficient compared to more modern sorting algorithms for large datasets due to its higher time complexity.
+Not Practical: Not suitable for practical use in applications where sorting speed and efficiency are critical.
+Stooge Sort serves more as an academic or learning example rather than a practical sorting algorithm due to its inefficiency. Its recursive nature and unusual sorting logic make it an interesting algorithm to study from a theoretical standpoint.
