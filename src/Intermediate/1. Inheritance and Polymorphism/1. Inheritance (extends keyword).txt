@@ -1,0 +1,93 @@
+Inheritance is a fundamental concept in object-oriented programming (OOP) where a class (subclass or derived class) inherits attributes and methods from another class (superclass or base class). In Java, inheritance is implemented using the extends keyword. Let's explore inheritance in Java, along with the types of inheritance:
+
+Syntax of Inheritance in Java
+In Java, a subclass extends a superclass using the extends keyword. The subclass inherits all non-private attributes and methods of the superclass. Here's the basic syntax:
+
+// Superclass (Parent class)
+class Superclass {
+    // Superclass members
+}
+
+// Subclass (Child class) extending Superclass
+class Subclass extends Superclass {
+    // Subclass members
+}
+Example of Inheritance
+
+// Superclass
+class Animal {
+    void eat() {
+        System.out.println("Animal is eating...");
+    }
+}
+
+// Subclass inheriting from Animal
+class Dog extends Animal {
+    void bark() {
+        System.out.println("Dog is barking...");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Dog myDog = new Dog();
+        myDog.eat(); // Inherited method from Animal
+        myDog.bark(); // Method of Dog class
+    }
+}
+Output:
+csharp
+Copy code
+Animal is eating...
+Dog is barking...
+Types of Inheritance
+Inheritance in Java can be categorized into several types based on how classes inherit properties and behaviors from one another:
+
+1. Single Inheritance: A subclass inherits from only one superclass.
+
+class A {}
+class B extends A {}
+
+2. Multilevel Inheritance: A subclass extends another subclass, forming a chain of inheritance.
+
+class A {}
+class B extends A {}
+class C extends B {}
+
+3. Hierarchical Inheritance: Multiple subclasses inherit from the same superclass.
+
+class A {}
+class B extends A {}
+class C extends A {}
+
+4. Multiple Inheritance (through Interfaces): A subclass implements multiple interfaces, which allows it to inherit methods from multiple sources.
+
+interface A {}
+interface B {}
+class C implements A, B {}
+
+Note: Java does not support multiple inheritance of classes (where a class extends multiple classes), but it supports multiple inheritance of interfaces.
+
+5. Hybrid Inheritance: Combination of two or more types of inheritance.
+
+class A {}
+class B extends A {}
+interface C {}
+class D extends B implements C {}
+
+
+Key Points
+1. Superclass and Subclass: The superclass (parent class) provides attributes and behaviors that are inherited by the subclass (child class).
+2. Method Overriding: Subclasses can override superclass methods to provide their own implementation.
+3. Access Modifiers: Inherited members are subject to access modifiers (public, protected, default, private) that determine their visibility in subclasses.
+
+
+Summary
+Inheritance is a powerful mechanism in Java that supports code reusability, promotes hierarchical relationships between classes, and facilitates polymorphism through method overriding. Understanding the types of inheritance helps in designing class hierarchies that are structured and maintainable, adhering to the principles of object-oriented programming.
+
+
+
+
+
+
+

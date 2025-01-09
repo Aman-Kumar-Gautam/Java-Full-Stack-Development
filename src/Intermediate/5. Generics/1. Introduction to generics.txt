@@ -1,0 +1,165 @@
+Introduction to Generics in Java
+
+Generics were introduced in Java 5 to provide a way to define classes, interfaces, and methods with a placeholder for the type of data they operate on. Generics allow for type safety and code reusability, which means you can create classes, interfaces, and methods that can operate on any specified type without the need for casting or other type-specific code.
+
+Benefits of Using Generics
+
+1. Type Safety: Generics ensure that you can only operate on the type of data that you specify, which helps prevent ClassCastException at runtime.
+2. Elimination of Casts: Without generics, you would need to cast objects when retrieving them from a collection. Generics remove the need for these casts.
+3. Code Reusability: Generics allow you to write a single class, interface, or method that can be reused with different types of data.
+4. Improved Readability and Maintenance: Generics make the code more readable and easier to maintain because they provide explicit type information.
+
+Basic Syntax of Generics
+1. Generics are specified by angle brackets (<>) and a type parameter, which is usually a single letter (e.g., E for element, T for type, K for key, V for value).
+
+Example of a Generic Class:
+
+public class Box<T> {
+    private T content;
+
+    public void setContent(T content) {
+        this.content = content;
+    }
+
+    public T getContent() {
+        return content;
+    }
+
+    public static void main(String[] args) {
+        Box<String> stringBox = new Box<>();
+        stringBox.setContent("Hello, Generics!");
+        System.out.println("String content: " + stringBox.getContent());
+
+        Box<Integer> integerBox = new Box<>();
+        integerBox.setContent(123);
+        System.out.println("Integer content: " + integerBox.getContent());
+    }
+}
+In this example, Box is a generic class that can hold any type specified at instantiation.
+
+Generic Methods
+Methods can also be generic, which means they can operate on different types specified at the time of the method call.
+
+Example of a Generic Method:
+
+public class GenericMethodExample {
+    public static <T> void printArray(T[] array) {
+        for (T element : array) {
+            System.out.println(element);
+        }
+    }
+
+    public static void main(String[] args) {
+        Integer[] intArray = {1, 2, 3, 4, 5};
+        String[] stringArray = {"Hello", "Generics", "World"};
+
+        System.out.println("Integer Array:");
+        printArray(intArray);
+
+        System.out.println("String Array:");
+        printArray(stringArray);
+    }
+}
+In this example, printArray is a generic method that can print elements of any array type.
+
+Bounded Type Parameters
+You can restrict the types that can be used with generics using bounded type parameters. This is done using the extends keyword for upper bounds and super keyword for lower bounds.
+
+Upper Bounded Type Parameter:
+
+public class UpperBoundedExample {
+    public static <T extends Number> void printNumber(T number) {
+        System.out.println("Number: " + number);
+    }
+
+    public static void main(String[] args) {
+        printNumber(10); // Integer
+        printNumber(3.14); // Double
+    }
+}
+In this example, printNumber can accept any type that is a subclass of Number.
+
+Lower Bounded Type Parameter:
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class LowerBoundedExample {
+    public static void addNumbers(List<? super Integer> list) {
+        list.add(1);
+        list.add(2);
+        list.add(3);
+    }
+
+    public static void main(String[] args) {
+        List<Number> numberList = new ArrayList<>();
+        addNumbers(numberList);
+        System.out.println("Number List: " + numberList);
+    }
+}
+In this example, addNumbers can accept any list that is a List of Integer or a superclass of Integer.
+
+Wildcards in Generics
+Wildcards are used to represent an unknown type. They are particularly useful when working with generics in methods where the exact type is not known.
+
+Unbounded Wildcard:
+
+public class UnboundedWildcardExample {
+    public static void printList(List<?> list) {
+        for (Object element : list) {
+            System.out.println(element);
+        }
+    }
+
+    public static void main(String[] args) {
+        List<String> stringList = new ArrayList<>();
+        stringList.add("Hello");
+        stringList.add("World");
+
+        List<Integer> intList = new ArrayList<>();
+        intList.add(1);
+        intList.add(2);
+
+        printList(stringList);
+        printList(intList);
+    }
+}
+Upper Bounded Wildcard:
+
+public class UpperBoundedWildcardExample {
+    public static void printNumbers(List<? extends Number> list) {
+        for (Number number : list) {
+            System.out.println(number);
+        }
+    }
+
+    public static void main(String[] args) {
+        List<Integer> intList = new ArrayList<>();
+        intList.add(1);
+        intList.add(2);
+
+        List<Double> doubleList = new ArrayList<>();
+        doubleList.add(3.14);
+        doubleList.add(1.618);
+
+        printNumbers(intList);
+        printNumbers(doubleList);
+    }
+}
+Lower Bounded Wildcard:
+
+public class LowerBoundedWildcardExample {
+    public static void addNumbers(List<? super Integer> list) {
+        list.add(1);
+        list.add(2);
+    }
+
+    public static void main(String[] args) {
+        List<Number> numberList = new ArrayList<>();
+        addNumbers(numberList);
+        System.out.println("Number List: " + numberList);
+    }
+}
+
+Summary
+Generics in Java provide a powerful mechanism for writing reusable and type-safe code. By allowing classes, interfaces, and methods to operate on any specified type, generics eliminate the need for casting and reduce the likelihood of ClassCastException. Whether you are creating a collection, defining a method, or working with complex types, generics enhance the flexibility and robustness of your code.
