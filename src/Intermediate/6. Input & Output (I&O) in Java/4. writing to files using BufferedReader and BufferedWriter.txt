@@ -1,0 +1,189 @@
+Writing to Files Using BufferedWriter and Reading with BufferedReader in Java
+When working with file I/O in Java, BufferedReader and BufferedWriter are commonly used for efficient reading and writing of text data. These classes buffer the characters for efficient input and output operations.
+
+Writing to Files Using BufferedWriter
+BufferedWriter is used to write text to a character output stream, buffering characters to provide efficient writing.
+
+Example: Writing to a File Using BufferedWriter
+
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class BufferedWriterExample {
+    public static void main(String[] args) {
+        try (FileWriter fw = new FileWriter("output.txt");
+             BufferedWriter bw = new BufferedWriter(fw)) {
+
+            bw.write("Hello, World!");
+            bw.newLine(); // Adds a new line
+            bw.write("This is a test file.");
+            bw.newLine();
+            bw.write("BufferedWriter makes it efficient.");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+In this example:
+
+FileWriter is used to open the file output.txt for writing.
+BufferedWriter wraps FileWriter to provide buffering for efficient writing.
+The write method is used to write strings to the file.
+newLine is used to add a new line in the file.
+Reading from Files Using BufferedReader
+BufferedReader is used to read text from a character input stream, buffering characters to provide efficient reading.
+
+Example: Reading from a File Using BufferedReader
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class BufferedReaderExample {
+    public static void main(String[] args) {
+        try (FileReader fr = new FileReader("output.txt");
+             BufferedReader br = new BufferedReader(fr)) {
+
+            String line;
+            while ((line = br.readLine()) != null) {
+                System.out.println(line);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+In this example:
+
+FileReader is used to open the file output.txt for reading.
+BufferedReader wraps FileReader to provide buffering for efficient reading.
+The readLine method is used to read the file line by line.
+Combining BufferedWriter and BufferedReader
+You can combine both BufferedWriter and BufferedReader to write to a file and then read from it.
+
+Example: Writing and Then Reading from a File
+
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class BufferedReadWriteExample {
+    public static void main(String[] args) {
+        // Writing to the file
+        try (FileWriter fw = new FileWriter("example.txt");
+             BufferedWriter bw = new BufferedWriter(fw)) {
+
+            bw.write("Line 1: Hello, World!");
+            bw.newLine();
+            bw.write("Line 2: This is a test file.");
+            bw.newLine();
+            bw.write("Line 3: BufferedWriter makes it efficient.");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // Reading from the file
+        try (FileReader fr = new FileReader("example.txt");
+             BufferedReader br = new BufferedReader(fr)) {
+
+            String line;
+            while ((line = br.readLine()) != null) {
+                System.out.println(line);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+In this example:
+
+Writing to the file:
+
+FileWriter and BufferedWriter are used to write multiple lines of text to example.txt.
+bw.write writes text to the file.
+bw.newLine adds a new line between texts.
+Reading from the file:
+
+FileReader and BufferedReader are used to read the contents of example.txt.
+br.readLine reads each line of text from the file until the end of the file is reached.
+Handling Exceptions
+When working with file I/O, it's important to handle exceptions properly to manage potential errors, such as file not found or I/O errors.
+
+Example with Proper Exception Handling
+
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class BufferedReadWriteWithExceptionHandling {
+    public static void main(String[] args) {
+        BufferedWriter bw = null;
+        BufferedReader br = null;
+
+        try {
+            // Writing to the file
+            bw = new BufferedWriter(new FileWriter("example.txt"));
+            bw.write("This is an example text.");
+            bw.newLine();
+            bw.write("Writing and reading using BufferedWriter and BufferedReader.");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (bw != null) {
+                    bw.close();
+                }
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        }
+
+        try {
+            // Reading from the file
+            br = new BufferedReader(new FileReader("example.txt"));
+            String line;
+            while ((line = br.readLine()) != null) {
+                System.out.println(line);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (br != null) {
+                    br.close();
+                }
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
+}
+In this example:
+
+finally blocks are used to ensure that resources are closed properly, even if an exception occurs.
+Resources (BufferedWriter and BufferedReader) are checked for null before attempting to close them to avoid NullPointerException.
+
+
+
+Summary
+BufferedWriter: Used for efficient writing of text to a file.
+BufferedReader: Used for efficient reading of text from a file.
+Combining Both: Allows for efficient writing to and reading from text files.
+Exception Handling: Ensures resources are properly managed and any potential errors are handled gracefully.
+Using BufferedWriter and BufferedReader can significantly improve the performance of your file I/O operations, especially when dealing with large files.
+
+
+
+
+
