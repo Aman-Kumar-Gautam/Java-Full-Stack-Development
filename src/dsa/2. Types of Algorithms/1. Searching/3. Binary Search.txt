@@ -1,0 +1,95 @@
+Binary Search Algorithm
+Binary search is an efficient algorithm used to find the position of a target value within a sorted array. It works by repeatedly dividing the search interval in half. If the target value is less than the middle element, the search continues in the lower half, otherwise, it continues in the upper half. This process is repeated until the target value is found or the search interval is empty.
+
+How Binary Search Works
+Sort the Array: Ensure the array is sorted. Binary search only works on sorted arrays.
+Initialize Pointers: Set two pointers, low and high, at the beginning and end of the array, respectively.
+Calculate Midpoint: Calculate the midpoint of the current interval.
+Compare Midpoint Value:
+If the midpoint value equals the target, return the midpoint index.
+If the midpoint value is less than the target, adjust the low pointer to mid + 1.
+If the midpoint value is greater than the target, adjust the high pointer to mid - 1.
+Repeat: Repeat steps 3 and 4 until the low pointer exceeds the high pointer.
+Target Not Found: If the target is not found, return an indication (usually -1) that the target is not in the array.
+Steps in Pseudocode
+Here is the pseudocode for a binary search algorithm:
+
+function binarySearch(array, target)
+    low = 0
+    high = length(array) - 1
+    
+    while low <= high
+        mid = low + (high - low) / 2
+        
+        if array[mid] == target
+            return mid
+        else if array[mid] < target
+            low = mid + 1
+        else
+            high = mid - 1
+    
+    return -1
+Detailed Example
+Let's consider an example to illustrate binary search:
+
+Input Array: [3, 6, 8, 12, 14, 17, 25, 29, 31, 36, 42]
+Target Value: 25
+Step-by-Step Process:
+
+1. Initialize low to 0 and high to 10 (array length - 1).
+2. Calculate mid: 𝑚𝑖𝑑 = 0 + (10−0)/2 = 5
+3. Compare array[5] (17) with 25: 17 < 25, so set low to mid + 1 = 6.
+4. Calculate mid: mid = 6 +(10−6)/2 = 8.
+5. Compare array[8] (31) with 25: 31 > 25, so set high to mid - 1 = 7.
+6. Calculate mid: mid = 6+(7−6)/2 = 6.
+7. Compare array[6] (25) with 25: 25 == 25, so return index 6.
+
+
+Implementation in Python
+Here is a simple implementation of binary search in Python:
+
+def binary_search(array, target):
+    low = 0
+    high = len(array) - 1
+
+    while low <= high:
+        mid = low + (high - low) // 2
+        
+        if array[mid] == target:
+            return mid
+        elif array[mid] < target:
+            low = mid + 1
+        else:
+            high = mid - 1
+    
+    return -1
+
+# Example usage:
+arr = [3, 6, 8, 12, 14, 17, 25, 29, 31, 36, 42]
+target = 25
+result = binary_search(arr, target)
+
+if result != -1:
+    print(f"Element found at index: {result}")
+else:
+    print("Element not found in the array")
+Time and Space Complexity
+Time Complexity: O(log n), where n is the number of elements in the array. This is because the search interval is halved with each iteration.
+Space Complexity: O(1) for the iterative version, as it uses a constant amount of extra space. The recursive version has a space complexity of O(log n) due to the call stack.
+Use Cases and Limitations
+Use Cases:
+
+Large sorted datasets where efficient searching is required.
+Applications requiring frequent search operations, such as databases and search engines.
+Limitations:
+
+Requires the array to be sorted. For unsorted arrays, a sorting step (e.g., quicksort or mergesort) must be performed first, which has its own complexity.
+Not suitable for small datasets where a linear search might be more efficient due to its simplicity.
+Binary search is a fundamental algorithm that is highly efficient for searching in sorted arrays. It is widely used in computer science and software engineering for tasks requiring fast data retrieval.
+
+
+
+
+
+
+

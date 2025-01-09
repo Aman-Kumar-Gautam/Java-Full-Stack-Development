@@ -1,0 +1,94 @@
+
+Bubble Sort Algorithm
+Bubble Sort is a straightforward comparison-based sorting algorithm. It repeatedly steps through the list, compares adjacent elements, and swaps them if they are in the wrong order. The pass through the list is repeated until the list is sorted.
+
+How Bubble Sort Works
+Initialization: Start with the entire array.
+Pass through the array:
+Compare each pair of adjacent elements.
+If they are in the wrong order (e.g., the first element is greater than the second), swap them.
+Continue until the end of the array.
+Repeat: Repeat the process for each element in the array, reducing the number of comparisons on each pass because the largest remaining element in the unsorted portion of the array "bubbles up" to its correct position.
+Termination: The array is sorted when no swaps are needed in a pass, indicating that all elements are in their correct positions.
+Pseudocode for Bubble Sort
+Here is the pseudocode for the Bubble Sort algorithm:
+
+function bubbleSort(array):
+    n = length(array)
+    for i from 0 to n-1:
+        // Last i elements are already in place
+        for j from 0 to n-i-1:
+            // Traverse the array from 0 to n-i-1
+            // Swap if the element found is greater than the next element
+            if array[j] > array[j+1]:
+                swap(array[j], array[j+1])
+Detailed Example
+Let's consider an example to illustrate Bubble Sort:
+
+Input Array: [64, 25, 12, 22, 11]
+Step-by-Step Process:
+
+Initial Array: [64, 25, 12, 22, 11]
+
+Pass 1:
+
+Compare 64 with 25 (swap)
+Compare 64 with 12 (swap)
+Compare 64 with 22 (swap)
+Compare 64 with 11 (swap)
+Array after pass 1: [25, 12, 22, 11, 64]
+Pass 2:
+
+Compare 25 with 12 (swap)
+Compare 25 with 22 (no swap)
+Compare 25 with 11 (swap)
+Array after pass 2: [12, 22, 11, 25, 64]
+Pass 3:
+
+Compare 12 with 22 (no swap)
+Compare 22 with 11 (swap)
+Array after pass 3: [12, 11, 22, 25, 64]
+Pass 4:
+
+Compare 12 with 11 (swap)
+Array after pass 4: [11, 12, 22, 25, 64]
+Sorted Array: [11, 12, 22, 25, 64]
+
+Implementation in Python
+Here is a Python implementation of Bubble Sort:
+
+def bubble_sort(arr):
+    n = len(arr)
+    
+    # Traverse through all array elements
+    for i in range(n):
+        # Last i elements are already in place
+        for j in range(0, n-i-1):
+            # Traverse the array from 0 to n-i-1
+            # Swap if the element found is greater than the next element
+            if arr[j] > arr[j+1]:
+                arr[j], arr[j+1] = arr[j+1], arr[j]
+    
+    return arr
+
+# Example usage:
+arr = [64, 25, 12, 22, 11]
+sorted_arr = bubble_sort(arr)
+print("Sorted array:", sorted_arr)
+Time Complexity
+Best Case: O(n) - when the array is already sorted.
+Average Case: O(n^2)
+Worst Case: O(n^2)
+Bubble Sort is generally considered inefficient for large datasets due to its quadratic time complexity, but it is easy to understand and implement. It is primarily used for educational purposes or for sorting small datasets where simplicity is more important than efficiency.
+
+Space Complexity
+Space Complexity: O(1) - Bubble Sort is an in-place sorting algorithm as it does not require any extra space other than the input array.
+Use Cases and Limitations
+Use Cases:
+
+Educational Purposes: Teaching sorting algorithms due to its simplicity.
+Small Datasets: Sorting small arrays where ease of implementation is more valuable than sorting speed.
+Limitations:
+
+Inefficient for Large Datasets: Bubble Sort's quadratic time complexity makes it impractical for sorting large datasets compared to more efficient algorithms like Merge Sort or Quick Sort.
+Bubble Sort remains a fundamental sorting algorithm, providing a clear example of a simple sorting technique based on repeated comparison and swapping of adjacent elements until the array is sorted.

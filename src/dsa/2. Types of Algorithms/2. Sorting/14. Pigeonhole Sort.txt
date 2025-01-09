@@ -1,0 +1,98 @@
+Pigeonhole Sort, also known as Counting Sort, is a sorting algorithm that works well for sorting lists where the range of elements is not significantly greater than the number of elements. It is a non-comparative integer sorting algorithm that sorts elements by counting the frequency of each element and using this information to place elements in sorted order.
+
+How Pigeonhole Sort Works
+Identify Range: Determine the range of the input elements to establish the size of the pigeonhole array.
+
+Count Frequencies: Count the occurrences of each element in the input array and store these counts in a pigeonhole array.
+
+Reconstruct the Array: Iterate over the pigeonhole array to reconstruct the sorted array based on the counts stored in the pigeonholes.
+
+Pseudocode for Pigeonhole Sort
+Here is the pseudocode for Pigeonhole Sort:
+
+function pigeonhole_sort(array):
+    # Step 1: Find the minimum and maximum values in the array
+    min_value = min(array)
+    max_value = max(array)
+    
+    # Step 2: Compute the range of values and create a pigeonhole array
+    range_size = max_value - min_value + 1
+    pigeonholes = [0] * range_size
+    
+    # Step 3: Count frequencies of each element in the input array
+    for value in array:
+        pigeonholes[value - min_value] += 1
+    
+    # Step 4: Reconstruct the sorted array from the pigeonhole array
+    index = 0
+    for i in range(range_size):
+        while pigeonholes[i] > 0:
+            array[index] = i + min_value
+            index += 1
+            pigeonholes[i] -= 1
+Detailed Example
+Let's consider an example to illustrate Pigeonhole Sort:
+
+Input Array: [8, 3, 2, 7, 4, 6, 8, 9, 1, 3]
+Step-by-Step Process:
+
+Identify Range:
+
+Minimum value = 1
+Maximum value = 9
+Range size = 9 - 1 + 1 = 9
+Count Frequencies:
+
+Create a pigeonhole array of size 9 (pigeonholes = [0, 0, 0, 0, 0, 0, 0, 0, 0])
+Count frequencies of each element in the input array:
+css
+Copy code
+[1, 2, 3, 3, 4, 6, 7, 8, 8, 9]
+pigeonholes = [1, 1, 2, 1, 1, 1, 1, 2, 1]
+Reconstruct Sorted Array:
+
+Iterate over the pigeonhole array and reconstruct the sorted array:
+
+Sorted array: [1, 2, 3, 3, 4, 6, 7, 8, 8, 9]
+Implementation in Python
+Here is a Python implementation of Pigeonhole Sort:
+
+def pigeonhole_sort(arr):
+    min_value = min(arr)
+    max_value = max(arr)
+    range_size = max_value - min_value + 1
+    pigeonholes = [0] * range_size
+    
+    for value in arr:
+        pigeonholes[value - min_value] += 1
+    
+    index = 0
+    for i in range(range_size):
+        while pigeonholes[i] > 0:
+            arr[index] = i + min_value
+            index += 1
+            pigeonholes[i] -= 1
+
+# Example usage:
+arr = [8, 3, 2, 7, 4, 6, 8, 9, 1, 3]
+pigeonhole_sort(arr)
+print("Sorted array:", arr)
+Time Complexity
+Time Complexity: O(n + N), where n is the number of elements in the input array and N is the range of input elements (max_value - min_value). This makes Pigeonhole Sort efficient when the range of elements is not significantly larger than the number of elements.
+Space Complexity
+Space Complexity: O(N), where N is the range of input elements. Pigeonhole Sort requires additional space for the pigeonhole array proportional to the range of input elements.
+Use Cases and Limitations
+Use Cases:
+
+Small Range of Elements: Pigeonhole Sort is efficient when sorting arrays where the range of possible key values (maximum - minimum value) is relatively small.
+Integer Sorting: It is suitable for sorting integers or small fixed range data sets.
+Limitations:
+
+Space Complexity: Requires additional space proportional to the range of input elements, which can be impractical for large ranges.
+Limited Range: Inefficient for sorting large arrays with a wide range of input values, as it would require a large amount of space for the pigeonhole array.
+Pigeonhole Sort is a simple and effective algorithm for sorting small ranges of integers, leveraging counting frequencies to achieve sorting in linear time. It is particularly useful in scenarios where the range of possible values is limited and known in advance.
+
+
+
+
+

@@ -1,0 +1,117 @@
+Cycle Sort is an in-place sorting algorithm that works by reducing the number of writes (memory swaps) to a minimum. It is based on the idea that the permutation to be sorted can be factored into cycles, which can then be rotated to give a sorted result.
+
+How Cycle Sort Works
+Cycle Detection: Cycle Sort divides the input list into cycles. Each cycle contains one permutation of the array elements.
+
+Sorting Process:
+
+For each cycle, it finds the correct position of the current element by counting all elements smaller than it.
+Once the correct position is found, it places the element there and moves the element previously occupying that position to its correct position.
+Optimization: Cycle Sort minimizes the number of memory writes and is thus useful when memory write operation is costly, such as with flash memory.
+
+Pseudocode for Cycle Sort
+Here is the pseudocode for Cycle Sort:
+
+function cycle_sort(array):
+    n = length(array)
+    
+    for cycle_start in range(n - 1):
+        item = array[cycle_start]
+        pos = cycle_start
+        
+        # Find position where we put the item
+        for i in range(cycle_start + 1, n):
+            if array[i] < item:
+                pos += 1
+        
+        # If the item is already in correct position, continue
+        if pos == cycle_start:
+            continue
+        
+        # Otherwise, put the item to its correct position
+        while item == array[pos]:
+            pos += 1
+        array[pos], item = item, array[pos]
+        
+        # Rotate the rest of the cycle
+        while pos != cycle_start:
+            pos = cycle_start
+            for i in range(cycle_start + 1, n):
+                if array[i] < item:
+                    pos += 1
+            while item == array[pos]:
+                pos += 1
+            array[pos], item = item, array[pos]
+Detailed Example
+Let's consider an example to illustrate Cycle Sort:
+
+Input Array: [5, 2, 1, 4, 3]
+Step-by-Step Process:
+
+Cycle 1: Start from index 0 (cycle_start = 0), element 5.
+
+Find the correct position for 5 by counting elements smaller than it: pos = 1.
+Swap 5 with 2, resulting in: [2, 5, 1, 4, 3].
+Continue to rotate the cycle until cycle_start is reached.
+Cycle 2: Start from index 1 (cycle_start = 1), element 5 (already in correct position).
+
+No changes needed.
+Cycle 3: Start from index 2 (cycle_start = 2), element 1.
+
+Find the correct position for 1 by counting elements smaller than it: pos = 0.
+Swap 1 with 2, resulting in: [1, 2, 5, 4, 3].
+Rotate the cycle until cycle_start is reached.
+Cycle 4: Continue this process until all elements are sorted in their correct positions.
+
+Implementation in Python
+Here is a Python implementation of Cycle Sort:
+
+def cycle_sort(array):
+    n = len(array)
+    
+    for cycle_start in range(n - 1):
+        item = array[cycle_start]
+        pos = cycle_start
+        
+        # Find position where we put the item
+        for i in range(cycle_start + 1, n):
+            if array[i] < item:
+                pos += 1
+        
+        # If the item is already in correct position, continue
+        if pos == cycle_start:
+            continue
+        
+        # Otherwise, put the item to its correct position
+        while item == array[pos]:
+            pos += 1
+        array[pos], item = item, array[pos]
+        
+        # Rotate the rest of the cycle
+        while pos != cycle_start:
+            pos = cycle_start
+            for i in range(cycle_start + 1, n):
+                if array[i] < item:
+                    pos += 1
+            while item == array[pos]:
+                pos += 1
+            array[pos], item = item, array[pos]
+
+# Example usage:
+arr = [5, 2, 1, 4, 3]
+cycle_sort(arr)
+print("Sorted array:", arr)
+Time Complexity
+Time Complexity: O(n^2), where n is the number of elements in the input array. Despite the quadratic worst-case time complexity, Cycle Sort can be faster than other O(n^2) algorithms like Bubble Sort due to its reduced number of writes.
+Space Complexity
+Space Complexity: O(1) - Cycle Sort is an in-place sorting algorithm that requires only a constant amount of extra space.
+Use Cases and Limitations
+Use Cases:
+
+Memory Write Optimization: Cycle Sort minimizes the number of writes to memory, making it suitable for environments where write operations are expensive or need to be minimized.
+Stable Sorting: It is a stable sorting algorithm, meaning it preserves the relative order of equal elements.
+Limitations:
+
+Quadratic Time Complexity: Similar to other quadratic sorting algorithms, Cycle Sort may not be suitable for large datasets due to its time complexity.
+Not Suitable for All Data Types: It may not perform as well on data sets with large ranges or distributions where more efficient sorting algorithms (like Quick Sort or Merge Sort) would be preferable.
+Cycle Sort is a straightforward and effective sorting algorithm that minimizes memory writes, making it suitable for certain specialized applications where write operations are a concern. However, for general-purpose sorting of large datasets, algorithms with better average-case time complexity, such as Quick Sort or Merge Sort, are typically preferred.
