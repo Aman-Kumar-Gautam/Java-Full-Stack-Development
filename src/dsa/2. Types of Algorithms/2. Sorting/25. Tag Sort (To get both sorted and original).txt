@@ -1,0 +1,83 @@
+
+Tag Sort is a sorting algorithm that not only sorts an array but also keeps track of the original indices of the elements. This allows you to retrieve both the sorted array and the original indices mapping to the sorted order. This algorithm is particularly useful when you need to sort data while retaining information about its original positions.
+
+How Tag Sort Works
+Tag Sort involves tagging each element of the array with its original index, sorting based on the element values, and then using the tags to reorder the original array accordingly.
+
+Tagging Phase: Create pairs of (element, index) where each pair contains an element from the original array and its corresponding index.
+
+Sorting Phase: Sort these pairs primarily based on the element values. If two elements have the same value, their order is maintained based on their original indices.
+
+Reordering Phase: After sorting, extract the sorted elements from the pairs and restore them to the original array while retaining the original indices.
+
+Pseudocode for Tag Sort
+Here’s a pseudocode implementation of Tag Sort:
+
+function tagSort(array):
+    n = length(array)
+    taggedArray = [(array[i], i) for i in range(n)]
+    
+    // Sort taggedArray based on the element value (first element of each tuple)
+    taggedArray.sort(key=lambda x: x[0])
+    
+    // Extract sorted elements and their original indices
+    sortedArray = [taggedArray[i][0] for i in range(n)]
+    originalIndices = [taggedArray[i][1] for i in range(n)]
+    
+    return sortedArray, originalIndices
+Example Execution
+Let's consider an example to illustrate Tag Sort:
+
+Input Array: [3, 1, 4, 1, 5]
+Step-by-Step Process:
+
+Tagging Phase:
+
+Create tagged array: [(3, 0), (1, 1), (4, 2), (1, 3), (5, 4)]
+Sorting Phase:
+
+Sort tagged array based on the first element of each tuple: [(1, 1), (1, 3), (3, 0), (4, 2), (5, 4)]
+Reordering Phase:
+
+Extract sorted elements: [1, 1, 3, 4, 5]
+Extract original indices: [1, 3, 0, 2, 4]
+Result:
+
+Sorted Array: [1, 1, 3, 4, 5]
+Original Indices: [1, 3, 0, 2, 4]
+Implementation in Python
+Here's a Python implementation of Tag Sort:
+
+def tag_sort(array):
+    n = len(array)
+    tagged_array = [(array[i], i) for i in range(n)]
+    
+    # Sort tagged_array based on the element value (first element of each tuple)
+    tagged_array.sort(key=lambda x: x[0])
+    
+    # Extract sorted elements and their original indices
+    sorted_array = [tagged_array[i][0] for i in range(n)]
+    original_indices = [tagged_array[i][1] for i in range(n)]
+    
+    return sorted_array, original_indices
+
+# Example usage:
+arr = [3, 1, 4, 1, 5]
+sorted_arr, original_indices = tag_sort(arr)
+
+print("Original Array:", arr)
+print("Sorted Array:", sorted_arr)
+print("Original Indices in Sorted Order:", original_indices)
+Explanation
+tag_sort Function: Implements Tag Sort in Python. It creates a list of tuples (element, index) from the input array, sorts these tuples based on the element values, and then extracts the sorted elements and their corresponding original indices.
+
+Main Function: Initializes an array, calls tag_sort() to sort it while preserving the original indices, and then prints both the original and sorted arrays along with the original indices in the sorted order.
+
+Use Cases and Considerations
+Preserving Original Order: Tag Sort is useful when you need to know the original positions of elements after sorting.
+
+Efficiency: The time complexity of Tag Sort is O(n log n) due to sorting, where n is the number of elements in the array.
+
+Applications: It can be applied in scenarios where you need to sort data and then perform operations based on the sorted order while referring back to the original data.
+
+Tag Sort provides a straightforward way to sort an array while maintaining the ability to reference the original indices of the sorted elements, making it a valuable tool in various programming scenarios.

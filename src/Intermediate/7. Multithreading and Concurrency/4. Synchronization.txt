@@ -1,0 +1,127 @@
+Synchronization in Java is a technique used to control access to shared resources or critical sections by multiple threads. It ensures that only one thread can access the resource at any given time, preventing data corruption and maintaining thread safety. Here's an overview of synchronization in Java:
+
+Why Synchronization?
+In a multithreaded environment, when multiple threads access shared resources concurrently, it can lead to data inconsistency or race conditions. Synchronization helps to:
+
+Ensure thread safety by preventing simultaneous access to shared resources.
+Coordinate threads to properly order their execution and maintain data integrity.
+Provide a mechanism for mutual exclusion where only one thread can execute a synchronized block of code or method at a time.
+Synchronized Methods
+You can synchronize a method by using the synchronized keyword in its method signature. When a thread invokes a synchronized method, it automatically acquires the intrinsic lock (or monitor lock) of the object and releases it when the method completes or throws an exception.
+
+class Counter {
+    private int count;
+
+    // Synchronized method
+    public synchronized void increment() {
+        count++;
+    }
+
+    // Non-synchronized method
+    public int getCount() {
+        return count;
+    }
+}
+In this example:
+
+The increment() method is synchronized, ensuring that only one thread can execute it at a time. This prevents concurrent updates to the count variable.
+The getCount() method is not synchronized and can be accessed concurrently by multiple threads.
+Synchronized Blocks
+You can also synchronize specific blocks of code rather than entire methods using synchronized blocks. This gives more flexibility by allowing finer-grained control over synchronization.
+
+class Counter {
+    private int count;
+
+    public void increment() {
+        synchronized (this) { // Synchronized block
+            count++;
+        }
+    }
+
+    public int getCount() {
+        return count;
+    }
+}
+In this example:
+
+The synchronized block synchronized (this) ensures that only one thread can execute the code inside the block at a time, using the object's intrinsic lock (this in this case).
+Class-level Synchronization
+You can synchronize static methods or an entire class using the class object's monitor lock (ClassName.class).
+
+class SharedResource {
+    public static synchronized void staticMethod() {
+        // Static synchronized method
+    }
+
+    public void method() {
+        synchronized (SharedResource.class) { // Synchronized block using class object
+            // Code
+        }
+    }
+}
+Important Concepts
+Intrinsic Lock (Monitor Lock): Every Java object has an intrinsic lock associated with it. When a thread enters a synchronized method or block, it acquires the lock and releases it when it exits the synchronized method/block.
+
+Thread Interference: When multiple threads access shared resources without synchronization, it can lead to unpredictable results and data corruption.
+
+Deadlock
+Deadlock is a situation where two or more threads are blocked forever, waiting for each other to release the locks. It typically occurs when threads have circular dependencies on synchronized locks. Avoiding deadlock involves careful design and ensuring threads acquire locks in a consistent order.
+
+Example: Using Synchronization
+
+class Counter {
+    private int count;
+
+    // Synchronized method
+    public synchronized void increment() {
+        count++;
+    }
+
+    public int getCount() {
+        return count;
+    }
+}
+
+public class SynchronizationExample {
+    public static void main(String[] args) {
+        Counter counter = new Counter();
+
+        // Multiple threads incrementing the counter
+        Thread thread1 = new Thread(() -> {
+            for (int i = 0; i < 1000; i++) {
+                counter.increment();
+            }
+        });
+
+        Thread thread2 = new Thread(() -> {
+            for (int i = 0; i < 1000; i++) {
+                counter.increment();
+            }
+        });
+
+        thread1.start();
+        thread2.start();
+
+        try {
+            thread1.join();
+            thread2.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println("Final count: " + counter.getCount()); // Expected output: 2000
+    }
+}
+In this example:
+
+Counter class has a synchronized increment() method to ensure the count variable is updated atomically.
+thread1 and thread2 concurrently increment the counter, and synchronization ensures correct results without race conditions.
+Summary
+Synchronization in Java ensures thread safety by allowing only one thread to execute synchronized methods or blocks at a time. It prevents data corruption and ensures proper coordination between threads accessing shared resources. Understanding synchronization is essential for developing reliable and concurrent Java applications.
+
+
+
+
+
+
+

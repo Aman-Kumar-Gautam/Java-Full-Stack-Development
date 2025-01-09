@@ -1,0 +1,42 @@
+Java has eight primitive data types, which are basic building blocks for storing data in memory. These primitive types are:
+
+1. byte: 
+   - Size: 8 bits
+   - Range: -128 to 127
+   - Used for: Small integers
+   
+2. short: 
+   - Size: 16 bits
+   - Range: -32,768 to 32,767
+   - Used for: Larger integers
+   
+3. int: 
+   - Size: 32 bits
+   - Range: -2^31 to 2^31 - 1
+   - Used for: Integer numbers
+   
+4. long: 
+   - Size: 64 bits
+   - Range: -2^63 to 2^63 - 1
+   - Used for: Larger integer numbers
+   
+5. float: 
+   - Size: 32 bits
+   - Used for: Decimal numbers with single precision
+   - Note: It is recommended to use 'float' only when you need to save memory in large arrays of floating-point numbers. For general use, 'double' is more precise.
+   
+6. double: 
+   - Size: 64 bits
+   - Used for: Decimal numbers with double precision
+   
+7. char: 
+   - Size: 16 bits
+   - Range: 0 to 65,535
+   - Used for: Single characters, such as letters and symbols
+   
+8. boolean: 
+   - Size: Not precisely defined
+   - Values: 'tru'` or 'false'
+   - Used for: Logical values, representing true or false
+   
+These primitive types are used to represent simple values directly, without needing to create objects. They are used extensively in Java programming for storing and manipulating data efficiently.

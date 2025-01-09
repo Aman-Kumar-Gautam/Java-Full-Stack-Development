@@ -1,0 +1,78 @@
+Looping statements in Java allow the repeated execution of a block of code as long as a specified condition is true. Java provides three main types of loops: for, while, and do-while. Here are detailed explanations and examples of each:
+
+1. for Loop
+The for loop is used when you know in advance how many times you want to execute a statement or a block of statements.
+
+Syntax:
+
+for (initialization; condition; update) {
+    // code to be executed
+}
+Example:
+
+public class ForLoopExample {
+    public static void main(String[] args) {
+        for (int i = 0; i < 5; i++) {
+            System.out.println("i: " + i);
+        }
+    }
+}
+Explanation:
+
+Initialization: int i = 0 sets the starting point.
+Condition: i < 5 determines how long the loop runs.
+Update: i++ increments the loop counter.
+2. while Loop
+The while loop is used when you do not know in advance how many times you want to execute a statement or a block of statements. The loop continues as long as the specified condition is true.
+
+Syntax:
+
+while (condition) {
+    // code to be executed
+}
+Example:
+
+public class WhileLoopExample {
+    public static void main(String[] args) {
+        int i = 0;
+        while (i < 5) {
+            System.out.println("i: " + i);
+            i++;
+        }
+    }
+}
+Explanation:
+
+Condition: i < 5 is checked before each iteration.
+The loop executes as long as the condition is true.
+3. do-while Loop
+The do-while loop is similar to the while loop, but it guarantees that the loop block is executed at least once because the condition is evaluated after the block is executed.
+
+Syntax:
+
+do {
+    // code to be executed
+} while (condition);
+Example:
+
+public class DoWhileLoopExample {
+    public static void main(String[] args) {
+        int i = 0;
+        do {
+            System.out.println("i: " + i);
+            i++;
+        } while (i < 5);
+    }
+}
+Explanation:
+
+Code block: The statements inside the do block are executed first.
+Condition: i < 5 is checked after each iteration.
+Summary
+for Loop: Used when the number of iterations is known. It consists of initialization, condition, and update statements.
+Example: for (int i = 0; i < 5; i++) { ... }
+while Loop: Used when the number of iterations is unknown. The loop continues as long as the condition is true.
+Example: while (i < 5) { ... }
+do-while Loop: Similar to the while loop but ensures that the loop block is executed at least once.
+Example: do { ... } while (i < 5);
+Each loop type serves different purposes and is chosen based on the specific requirements of the task at hand.
