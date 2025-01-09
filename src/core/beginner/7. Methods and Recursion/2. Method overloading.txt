@@ -1,0 +1,67 @@
+Method overloading in Java allows you to define multiple methods with the same name in the same class, but with different parameter lists. This enables you to perform similar tasks using methods that accept different types or numbers of parameters. Java determines which method to execute based on the number and type of arguments passed during method invocation. Here’s a detailed explanation of method overloading with examples:
+
+Rules for Method Overloading
+1. Method Signature: Java distinguishes methods primarily based on their method signatures, which include the method name and the parameter list (number, types, and order of parameters). Return type alone is not sufficient to differentiate overloaded methods.
+
+2. Parameter List Differences: Overloaded methods must differ in at least one of the following:
+
+1. Number of parameters
+2. Types of parameters
+3. Order of parameters
+
+
+3. Return Type: Methods can have the same name and parameter list as long as they differ in return type. However, this is not considered method overloading but rather method overriding, which is specific to inheritance and polymorphism.
+
+Example of Method Overloading
+
+public class Calculator {
+    
+    // Method to add two integers
+    public int add(int a, int b) {
+        return a + b;
+    }
+    
+    // Overloaded method to add three integers
+    public int add(int a, int b, int c) {
+        return a + b + c;
+    }
+    
+    // Overloaded method to add two doubles
+    public double add(double a, double b) {
+        return a + b;
+    }
+    
+    // Overloaded method to concatenate two strings
+    public String concatenate(String str1, String str2) {
+        return str1 + str2;
+    }
+    
+    // Overloaded method to concatenate three strings
+    public String concatenate(String str1, String str2, String str3) {
+        return str1 + str2 + str3;
+    }
+}
+Explanation of Overloaded Methods
+add(int a, int b): Accepts two integers and returns their sum.
+add(int a, int b, int c): Accepts three integers and returns their sum.
+add(double a, double b): Accepts two doubles and returns their sum.
+concatenate(String str1, String str2): Accepts two strings and returns their concatenation.
+concatenate(String str1, String str2, String str3): Accepts three strings and returns their concatenation.
+
+Benefits of Method Overloading
+1. Improved Readability: Method overloading allows you to use the same method name for logically similar operations, enhancing code readability.
+2. Code Reuse: You can reuse method names across different parameter types or numbers, reducing redundancy in method names.
+3. Flexibility: Provides flexibility in method design by allowing methods to accept different types of arguments while performing similar tasks.
+
+Note on Overriding vs Overloading
+Overriding: Involves providing a new implementation for a method in a subclass that has the same method signature as a method in its superclass.
+Overloading: Involves providing multiple methods within the same class with the same name but different parameter lists.
+
+Summary
+Method overloading in Java allows you to define multiple methods with the same name but different parameter lists within the same class. This feature enhances code flexibility, readability, and reusability by allowing you to perform similar operations on different types or numbers of parameters. Understanding method overloading is essential for building modular, maintainable Java applications.
+
+
+
+
+
+
