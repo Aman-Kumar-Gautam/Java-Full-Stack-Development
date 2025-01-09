@@ -1,0 +1,88 @@
+In Java, static variables and methods belong to the class rather than instances (objects) of the class. They are associated with the class itself rather than with any specific instance of the class. Understanding static variables and methods is crucial for effectively organizing and managing code in Java. Let's explore static variables and methods in detail:
+
+1. Static Variables
+A static variable (also known as a class variable) is a variable that belongs to the class rather than instances of the class. There is only one copy of a static variable regardless of how many instances of the class are created. static variables are declared with the static keyword and are often used for constants or variables that are shared among all instances of a class.
+
+Example:
+
+public class Car {
+    private String brand;
+    private int year;
+    private static int count = 0; // Static variable to count number of Car objects
+    
+    public Car(String brand, int year) {
+        this.brand = brand;
+        this.year = year;
+        count++; // Increment count each time a Car object is created
+    }
+    
+    // Instance method to display information about the car
+    public void displayInfo() {
+        System.out.println("Car brand: " + brand + ", Year: " + year);
+    }
+    
+    // Static method to access static variable 'count'
+    public static void displayCount() {
+        System.out.println("Total Cars created: " + count);
+    }
+    
+    public static void main(String[] args) {
+        Car car1 = new Car("Toyota", 2020);
+        Car car2 = new Car("Honda", 2022);
+        
+        car1.displayInfo(); // Output: Car brand: Toyota, Year: 2020
+        car2.displayInfo(); // Output: Car brand: Honda, Year: 2022
+        
+        Car.displayCount(); // Output: Total Cars created: 2
+    }
+}
+Static Variable count: count is a static variable that keeps track of the number of Car objects created. It is incremented in the constructor each time a new Car object is instantiated.
+
+Accessing static Variables: static variables are accessed using the class name (Car.count) or directly within static methods (count++).
+
+Shared Among Instances: count is shared among all instances of the Car class. Changes made to it are reflected in all instances.
+
+2. Static Methods
+A static method belongs to the class rather than instances of the class. It can be called directly using the class name without creating an instance of the class. static methods can access static variables and other static methods directly.
+
+Example:
+
+public class MathUtil {
+    // Static method to calculate the factorial of a number
+    public static int factorial(int n) {
+        if (n == 0 || n == 1) {
+            return 1;
+        }
+        return n * factorial(n - 1);
+    }
+    
+    public static void main(String[] args) {
+        int number = 5;
+        int result = MathUtil.factorial(number);
+        System.out.println("Factorial of " + number + " is: " + result); // Output: Factorial of 5 is: 120
+    }
+}
+Static Method factorial: factorial is a static method of the MathUtil class that calculates the factorial of a number recursively.
+
+Calling static Methods: static methods are called using the class name (MathUtil.factorial(number)).
+
+Accessing static Variables: static methods can directly access static variables of the class (count++).
+
+Key Points
+1. Single Copy: static variables have only one copy per class, regardless of how many instances of the class are created.
+
+2. Initialization: static variables are initialized when the class is loaded into memory and remain in memory until the program terminates.
+
+3. Usage: Use static variables for constants, counters, or variables that are shared among all instances of a class. Use static methods for utility methods that do not require access to instance variables.
+
+4. Access Control: static variables and methods can be accessed using the class name (Car.count, MathUtil.factorial) or directly within static methods.
+
+Summary
+static variables and methods in Java provide a way to share data and behavior among all instances of a class without creating multiple copies. They are essential for implementing utility methods, constants, and shared counters. Understanding how to use static variables and methods effectively enhances code organization and improves performance in Java applications.
+
+
+
+
+
+
+
