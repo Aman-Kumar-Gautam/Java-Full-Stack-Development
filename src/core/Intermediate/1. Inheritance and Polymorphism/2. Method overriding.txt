@@ -1,0 +1,81 @@
+Method overriding is a feature in object-oriented programming that allows a subclass to provide a specific implementation of a method that is already defined in its superclass. When a subclass overrides a method, it provides its own implementation of the method, which is used instead of the superclass's implementation when the method is called on an instance of the subclass. Let's delve into method overriding in Java with an explanation and examples.
+
+How Method Overriding Works
+In Java, method overriding requires that the method in the subclass has the same signature (name, parameters, and return type) as the method in the superclass. The subclass method must also adhere to the following rules:
+
+1. The method in the subclass must have the same name and parameters as the method in the superclass.
+2. The return type of the subclass method can be the same as, or a subtype (covariant return type), of the return type of the superclass method.
+3. The access level of the subclass method cannot be more restrictive than the superclass method. It can be the same or more permissive (public or protected can override public or protected, but not private).
+
+Example of Method Overriding
+Consider a superclass Animal with a method makeSound() that prints a generic sound. The subclass Dog overrides the makeSound() method to provide a specific sound for a dog:
+
+
+// Superclass
+class Animal {
+    // Method to make a sound
+    public void makeSound() {
+        System.out.println("Some generic sound");
+    }
+}
+
+// Subclass inheriting from Animal
+class Dog extends Animal {
+    // Override method to make a specific sound for Dog
+    @Override
+    public void makeSound() {
+        System.out.println("Bark bark!");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Animal animal = new Animal();
+        animal.makeSound(); // Output: Some generic sound
+        
+        Dog dog = new Dog();
+        dog.makeSound(); // Output: Bark bark!
+    }
+}
+
+Rules and Considerations for Method Overriding
+1. Method Signature: The method in the subclass must have the same name, parameter list, and return type as the method in the superclass.
+2. Annotations: It's good practice to use @Override annotation when overriding a method to ensure that the method is indeed intended to override a superclass method (optional but recommended).
+3. Access Modifiers: The access level of the overriding method can be the same or more accessible (public or protected in subclass can override public or protected in superclass). It cannot be more restrictive (private method cannot override).
+
+
+Covariant Return Types
+Java 5 introduced covariant return types, which means that the return type of the overriding method can be a subtype of the return type of the overridden method. This allows for more flexibility when designing subclasses. Here’s an example:
+
+// Superclass
+class Animal {
+    // Method returning Animal object
+    public Animal getAnimal() {
+        return new Animal();
+    }
+}
+
+// Subclass
+class Dog extends Animal {
+    // Overriding method returning Dog object (subtype of Animal)
+    @Override
+    public Dog getAnimal() {
+        return new Dog();
+    }
+}
+
+Method Overriding vs. Method Overloading
+
+1. Method Overriding: Occurs when a subclass provides a specific implementation of a method that is already defined in its superclass, with the same method signature.
+2. Method Overloading: Refers to having multiple methods in the same class with the same name but different parameters (different method signatures).
+
+
+Summary
+Method overriding is a fundamental feature in Java's object-oriented programming paradigm that allows subclasses to provide specific implementations of methods defined in their superclasses. It promotes code reusability, polymorphism, and flexibility in class hierarchies. Understanding and correctly implementing method overriding is essential for designing extensible and maintainable Java applications.
+
+
+
+
+
+
+

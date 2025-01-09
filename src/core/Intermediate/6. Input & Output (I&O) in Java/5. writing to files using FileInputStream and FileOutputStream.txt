@@ -1,0 +1,142 @@
+Writing to files using FileOutputStream and FileInputStream in Java is primarily used for handling binary data, such as images, videos, and other non-text files. These classes deal with raw byte streams, making them suitable for scenarios where direct byte-level manipulation is required.
+
+Writing to Files Using FileOutputStream
+FileOutputStream is used to write bytes to a file. It can be used to write both binary and text data.
+
+Example: Writing to a File Using FileOutputStream
+
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+public class FileOutputStreamExample {
+    public static void main(String[] args) {
+        String data = "Hello, World!";
+
+        try (FileOutputStream fos = new FileOutputStream("output.txt")) {
+            byte[] bytes = data.getBytes();
+            fos.write(bytes);
+
+            System.out.println("Data has been written to the file.");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+In this example:
+
+FileOutputStream is used to open the file output.txt for writing.
+data.getBytes() converts the string data into bytes.
+fos.write(bytes) writes the byte array to the file.
+Reading from Files Using FileInputStream
+FileInputStream is used to read bytes from a file. It can be used to read both binary and text data.
+
+Example: Reading from a File Using FileInputStream
+
+import java.io.FileInputStream;
+import java.io.IOException;
+
+public class FileInputStreamExample {
+    public static void main(String[] args) {
+        try (FileInputStream fis = new FileInputStream("output.txt")) {
+            int byteContent;
+            while ((byteContent = fis.read()) != -1) {
+                System.out.print((char) byteContent); // Convert byte to char for text
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+In this example:
+
+FileInputStream is used to open the file output.txt for reading.
+fis.read() reads bytes from the file. It returns -1 when the end of the file is reached.
+(char) byteContent converts each byte read into a character for text output.
+Combining FileOutputStream and FileInputStream
+You can combine FileOutputStream and FileInputStream to write to a file and then read from it.
+
+Example: Writing and Then Reading from a File
+
+import java.io.FileOutputStream;
+import java.io.FileInputStream;
+import java.io.IOException;
+
+public class FileOutputStreamExample {
+    public static void main(String[] args) {
+        String data = "Hello, World!";
+
+        // Writing to the file
+        try (FileOutputStream fos = new FileOutputStream("output.txt")) {
+            byte[] bytes = data.getBytes();
+            fos.write(bytes);
+
+            System.out.println("Data has been written to the file.");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // Reading from the file
+        try (FileInputStream fis = new FileInputStream("output.txt")) {
+            int byteContent;
+            while ((byteContent = fis.read()) != -1) {
+                System.out.print((char) byteContent); // Convert byte to char for text
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+In this example:
+
+Writing to the file: FileOutputStream writes the byte array of data to output.txt.
+Reading from the file: FileInputStream reads the byte data from output.txt and converts it to characters for display.
+Handling Exceptions
+When performing file I/O operations in Java, it's important to handle exceptions properly to manage potential errors such as file not found or I/O errors.
+
+Example with Exception Handling
+
+import java.io.FileOutputStream;
+import java.io.FileInputStream;
+import java.io.IOException;
+
+public class FileOutputStreamExceptionHandling {
+    public static void main(String[] args) {
+        String data = "Hello, World!";
+
+        // Writing to the file
+        try (FileOutputStream fos = new FileOutputStream("output.txt")) {
+            byte[] bytes = data.getBytes();
+            fos.write(bytes);
+
+            System.out.println("Data has been written to the file.");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // Reading from the file
+        try (FileInputStream fis = new FileInputStream("output.txt")) {
+            int byteContent;
+            while ((byteContent = fis.read()) != -1) {
+                System.out.print((char) byteContent); // Convert byte to char for text
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+In this example:
+
+Exception handling is implemented in both the writing and reading blocks to ensure proper resource management and error handling.
+
+Summary
+FileOutputStream: Writes bytes to a file, suitable for binary and text data.
+FileInputStream: Reads bytes from a file, suitable for binary and text data.
+Combining Both: Allows for writing and then reading binary or text data from files.
+Exception Handling: Ensures that resources are properly managed and any potential errors are handled gracefully.
+Using FileOutputStream and FileInputStream provides low-level control over file I/O operations in Java, making them suitable for scenarios where direct byte-level manipulation is required, such as handling binary data or optimizing performance in certain types of applications.

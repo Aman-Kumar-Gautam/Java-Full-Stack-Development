@@ -1,0 +1,157 @@
+Creational patterns in software design focus on how objects are instantiated and managed. They provide flexible mechanisms for object creation, allowing the software to be more modular, scalable, and easier to maintain. Here are three common creational patterns:
+
+1. Singleton Pattern
+Intent: Ensure a class has only one instance and provide a global point of access to it.
+
+Structure:
+
+Private constructor to prevent instantiation from other classes.
+Static member variable to hold the single instance of the class.
+Static method (getInstance()) that returns the singleton instance.
+Example:
+
+public class Singleton {
+    private static Singleton instance;
+    
+    // Private constructor to prevent instantiation
+    private Singleton() {}
+    
+    // Static method to get the singleton instance
+    public static Singleton getInstance() {
+        if (instance == null) {
+            instance = new Singleton();
+        }
+        return instance;
+    }
+}
+Usage: Singleton pattern is used when:
+
+There should be exactly one instance of a class, which can be accessed globally.
+Controlling access to shared resources, such as database connections or thread pools.
+The instance is expensive to create or requires lazy initialization.
+2. Factory Method Pattern
+Intent: Define an interface for creating objects, but let subclasses decide which class to instantiate. Encapsulates object creation.
+
+Structure:
+
+Creator interface or abstract class defining the factory method (createObject()).
+Concrete creator classes that implement the factory method to create specific objects.
+Example:
+
+// Product interface
+public interface Product {
+    void operation();
+}
+
+// Concrete Product
+public class ConcreteProduct implements Product {
+    @Override
+    public void operation() {
+        System.out.println("Executing operation in ConcreteProduct.");
+    }
+}
+
+// Creator interface
+public interface Creator {
+    Product createProduct();
+}
+
+// Concrete Creator implementing factory method
+public class ConcreteCreator implements Creator {
+    @Override
+    public Product createProduct() {
+        return new ConcreteProduct();
+    }
+}
+Usage: Factory Method pattern is used when:
+
+A class cannot anticipate the type of objects it needs to create.
+Object creation needs to be delegated to subclasses.
+The application needs to be decoupled from the actual classes it uses.
+3. Builder Pattern
+Intent: Separate the construction of a complex object from its representation, allowing the same construction process to create different representations.
+
+Structure:
+
+Builder interface defining steps to build parts of the product.
+Concrete builders implementing the builder interface to construct and assemble parts.
+Director class that constructs the object using the builder interface.
+Example:
+
+// Product class
+public class Product {
+    private String part1;
+    private String part2;
+    
+    // Constructor
+    public Product(String part1, String part2) {
+        this.part1 = part1;
+        this.part2 = part2;
+    }
+    
+    // Getters
+    public String getPart1() {
+        return part1;
+    }
+    
+    public String getPart2() {
+        return part2;
+    }
+}
+
+// Builder interface
+public interface Builder {
+    void buildPart1(String part1);
+    void buildPart2(String part2);
+    Product getResult();
+}
+
+// Concrete Builder
+public class ConcreteBuilder implements Builder {
+    private Product product;
+    
+    public ConcreteBuilder() {
+        this.product = new Product("", "");
+    }
+    
+    @Override
+    public void buildPart1(String part1) {
+        product = new Product(part1, product.getPart2());
+    }
+    
+    @Override
+    public void buildPart2(String part2) {
+        product = new Product(product.getPart1(), part2);
+    }
+    
+    @Override
+    public Product getResult() {
+        return product;
+    }
+}
+
+// Director class
+public class Director {
+    private Builder builder;
+    
+    public Director(Builder builder) {
+        this.builder = builder;
+    }
+    
+    public void construct() {
+        builder.buildPart1("Part 1");
+        builder.buildPart2("Part 2");
+    }
+}
+Usage: Builder pattern is used when:
+
+The algorithm for creating a complex object should be independent of the parts that make up the object.
+The construction process needs to allow different representations of the object being constructed.
+The construction process must be able to handle the creation of different parts of the object in a step-by-step manner.
+Conclusion
+Creational patterns provide flexible and reusable solutions for object creation, promoting modular and scalable software design. By encapsulating the object creation process, these patterns enhance code maintainability, flexibility, and testability. Choosing the appropriate creational pattern depends on the specific requirements and design goals of the application, ensuring efficient and effective object instantiation and management.
+
+
+
+
+

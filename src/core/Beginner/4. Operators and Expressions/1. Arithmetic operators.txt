@@ -1,0 +1,122 @@
+In Java, arithmetic operators are used to perform mathematical operations on variables and constants. Here are the basic arithmetic operators in Java with examples:
+ 1. Addition (`+`)
+The addition operator adds two operands.
+
+Example:
+
+public class ArithmeticOperators {
+    public static void main(String[] args) {
+        int a = 10;
+        int b = 20;
+        int sum = a + b;
+        System.out.println("Sum: " + sum); // Output: Sum: 30
+    }
+}
+ 2. Subtraction ('-')
+The subtraction operator subtracts the second operand from the first.
+
+Example:
+
+public class ArithmeticOperators {
+    public static void main(String[] args) {
+        int a = 20;
+        int b = 10;
+        int difference = a - b;
+        System.out.println("Difference: " + difference); // Output: Difference: 10
+    }
+} 3. Multiplication ('*')
+The multiplication operator multiplies two operands.
+
+Example:
+
+public class ArithmeticOperators {
+    public static void main(String[] args) {
+        int a = 10;
+        int b = 20;
+        int product = a * b;
+        System.out.println("Product: " + product); // Output: Product: 200
+    }
+}
+ 4. Division ('/')
+The division operator divides the first operand by the second. If both operands are integers, the result is an integer (the fractional part is truncated).
+
+Example:
+
+public class ArithmeticOperators {
+    public static void main(String[] args) {
+        int a = 20;
+        int b = 10;
+        int quotient = a / b;
+        System.out.println("Quotient: " + quotient); // Output: Quotient: 2
+    }
+}
+ 5. Modulus ('%')
+The modulus operator returns the remainder when the first operand is divided by the second.
+
+Example:
+
+public class ArithmeticOperators {
+    public static void main(String[] args) {
+        int a = 20;
+        int b = 3;
+        int remainder = a % b;
+        System.out.println("Remainder: " + remainder); // Output: Remainder: 2
+    }
+}
+ 6. Unary Plus (`+`)
+The unary plus operator indicates a positive value. It is typically redundant since numbers are positive by default.
+
+**Example:**
+
+public class ArithmeticOperators {
+    public static void main(String[] args) {
+        int a = +10; // Positive value
+        System.out.println("a: " + a); // Output: a: 10
+    }
+}
+ 7. Unary Minus (`-`)
+The unary minus operator negates an expression.
+
+Example:
+
+public class ArithmeticOperators {
+    public static void main(String[] args) {
+        int a = 10;
+        int b = -a; // Negates the value of a
+        System.out.println("b: " + b); // Output: b: -10
+    }
+}
+ 8. Increment ('++')
+The increment operator increases a variable's value by one. It can be used in two forms:
+- Prefix ('++a'): Increments the value before using it.
+- Postfix ('a++'): Uses the value before incrementing it.
+
+Example:
+
+public class ArithmeticOperators {
+    public static void main(String[] args) {
+        int a = 10;
+        System.out.println("Prefix Increment: " + ++a); // Output: Prefix Increment: 11
+        a = 10;
+        System.out.println("Postfix Increment: " + a++); // Output: Postfix Increment: 10
+        System.out.println("After Postfix Increment: " + a); // Output: After Postfix Increment: 11
+    }
+}
+ 9. Decrement ('--')
+The decrement operator decreases a variable's value by one. It can also be used in two forms:
+- Prefix ('--a'): Decrements the value before using it.
+- Postfix ('a--'): Uses the value before decrementing it.
+
+Example:
+
+public class ArithmeticOperators {
+    public static void main(String[] args) {
+        int a = 10;
+        System.out.println("Prefix Decrement: " + --a); // Output: Prefix Decrement: 9
+        a = 10;
+        System.out.println("Postfix Decrement: " + a--); // Output: Postfix Decrement: 10
+        System.out.println("After Postfix Decrement: " + a); // Output: After Postfix Decrement: 9
+    }
+}
+
+These examples demonstrate how arithmetic operators can be used in Java to perform various mathematical operations on numeric data types.
