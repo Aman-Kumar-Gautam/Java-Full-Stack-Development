@@ -1,0 +1,64 @@
+Creating a simple JavaFX application involves setting up a basic graphical user interface (GUI) with components like buttons, labels, and handling user interactions. Below is a step-by-step guide to create a simple JavaFX application that displays a window with a button and handles button click events.
+
+Prerequisites
+Before you begin, make sure you have:
+
+Java Development Kit (JDK) installed (JDK 8 or later, as JavaFX is included in JDK distributions starting from JDK 8u40).
+Integrated Development Environment (IDE) like IntelliJ IDEA, Eclipse, or any other IDE that supports Java and JavaFX development.
+Steps to Create a Simple JavaFX Application
+Create a JavaFX Application Class
+Create a new Java class that extends javafx.application.Application. Override the start() method, which is the entry point for JavaFX applications.
+
+
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
+
+public class SimpleJavaFXApp extends Application {
+
+    @Override
+    public void start(Stage primaryStage) {
+        Button btn = new Button();
+        btn.setText("Click Me!");
+        btn.setOnAction(e -> System.out.println("Button clicked!"));
+
+        StackPane root = new StackPane();
+        root.getChildren().add(btn);
+
+        Scene scene = new Scene(root, 300, 250);
+
+        primaryStage.setTitle("Simple JavaFX Application");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+}
+Understanding the Code
+Button Creation: Create a Button object (btn) and set its text using setText().
+Event Handling: Use setOnAction() to define an action to perform when the button is clicked (System.out.println("Button clicked!") in this case).
+Layout: Create a StackPane (root) to hold the button. You can use other layout panes like BorderPane, VBox, HBox, etc., based on your UI requirements.
+Scene and Stage: Create a Scene object (scene) with the root node (StackPane). Set the scene to the primary stage (primaryStage) and configure the stage title (setTitle()) and dimensions (Scene width and height).
+Launching the Application: In the main method, call launch(args) to start the JavaFX application.
+Run the Application
+Run the main method of your SimpleJavaFXApp class. This should launch the JavaFX application, displaying a window with a button labeled "Click Me!". Clicking the button will print "Button clicked!" to the console.
+
+Additional Tips
+FXML: For more complex UI layouts, consider using FXML (FXML Markup Language) for defining UI layouts separately from application logic. FXML is an XML-based language supported by JavaFX for designing UIs.
+
+Styling: JavaFX supports CSS for styling UI components. You can enhance the appearance of your application by applying styles to buttons, labels, and other UI elements.
+
+Event Handling: JavaFX provides various event handlers (setOnAction(), setOnMouseClicked(), etc.) for handling user interactions. Explore these to add interactivity to your application.
+
+Documentation: Refer to the JavaFX documentation for detailed guides, API references, and tutorials on developing JavaFX applications.
+
+By following these steps, you can create a simple JavaFX application and begin exploring the capabilities of JavaFX for building modern and interactive desktop applications in Java.
+
+
+
+
+

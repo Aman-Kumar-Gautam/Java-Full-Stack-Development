@@ -1,0 +1,90 @@
+CSS (Cascading Style Sheets) styling in JavaFX allows developers to enhance the visual appearance of JavaFX applications by applying styles to UI components such as buttons, labels, text fields, and more. JavaFX supports CSS3 for styling, enabling customization of colors, fonts, borders, backgrounds, and other visual properties. Here’s how you can apply CSS styling in JavaFX:
+
+Basics of CSS Styling in JavaFX
+Creating a CSS File:
+
+Create a .css file in your project's resources folder or any desired location. For example, styles.css.
+Applying CSS to JavaFX Nodes:
+
+JavaFX nodes (UI components) can be styled using CSS by setting a styleClass or directly applying inline styles.
+Loading CSS File:
+
+Load the CSS file into your JavaFX application using scene.getStylesheets().add("path/to/styles.css");.
+CSS Syntax:
+
+CSS selectors target specific nodes based on their type, ID, or class. Properties define the visual styles applied to selected nodes.
+Example of CSS Styling in JavaFX
+Let's illustrate how to apply CSS styling to a JavaFX button:
+
+Create a JavaFX Application:
+
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
+
+public class StyledJavaFXApp extends Application {
+
+    @Override
+    public void start(Stage primaryStage) {
+        Button button = new Button("Click Me");
+        
+        StackPane root = new StackPane();
+        root.getChildren().add(button);
+        
+        Scene scene = new Scene(root, 300, 250);
+        
+        // Load CSS file
+        scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
+        
+        primaryStage.setTitle("Styled JavaFX Application");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+}
+Create a CSS File (styles.css):
+css
+
+/* styles.css */
+.button {
+    -fx-background-color: #4CAF50; /* Green background */
+    -fx-text-fill: white; /* White text color */
+    -fx-font-size: 14px; /* Font size */
+    -fx-padding: 10px 20px; /* Padding */
+}
+
+.button:hover {
+    -fx-background-color: #45a049; /* Darker green background on hover */
+}
+Apply CSS Class to Button:
+
+button.getStyleClass().add("button");
+Explanation
+Loading CSS: In the start() method, scene.getStylesheets().add("path/to/styles.css"); loads the CSS file into the scene.
+
+CSS Classes: styles.css defines a .button class with styles like background color, text color, font size, and padding. The .button:hover pseudo-class changes the button's background color on hover.
+
+Apply Style to Button: button.getStyleClass().add("button"); applies the .button class to the button, making it inherit styles defined in styles.css.
+
+Additional Tips
+Inline Styles: You can also apply styles directly to JavaFX nodes using node.setStyle("-fx-property: value;");.
+
+Global Styles: Use global selectors (*, root, etc.) in CSS files to set default styles for all nodes or specific root nodes.
+
+Tool Support: IDEs like IntelliJ IDEA and Eclipse provide CSS editors with syntax highlighting and auto-completion for JavaFX CSS files.
+
+Dynamic Styling: JavaFX allows dynamic styling using PseudoClass for pseudo-classes (:hover, :focused, etc.) and changing styles programmatically based on application state.
+
+By leveraging CSS styling in JavaFX, developers can create visually appealing and responsive user interfaces tailored to their application's design requirements. Experiment with different CSS properties and selectors to achieve the desired look and feel for your JavaFX applications.
+
+
+
+
+
+
+
