@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class stringClass {
+    @SuppressWarnings("unused")
     public static void main(String[] args) {
         // 1. Creating Strings
         // Using String Literal
