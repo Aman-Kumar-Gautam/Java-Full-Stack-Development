@@ -1,5 +1,5 @@
 // File: forloop.java
-public class ForLoopExample {
+public class forloop {
     public static void main(String[] args) {
         // Explanation of for loop:
         // A 'for' loop is used to repeat a block of code a specific number of times.
@@ -60,4 +60,5 @@ public class ForLoopExample {
         // Here, 'fruit' is a variable that takes the value of each element in the 'fruits' array.
 
         System.out.println("\nEnd of for loop examples!");
-    
+    }
+}

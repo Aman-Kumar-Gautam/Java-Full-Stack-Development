@@ -1,5 +1,4 @@
-// File: 
-public class whileloop.java {
+public class whileloop {
     public static void main(String[] args) {
         // Explanation of while loop:
         // A 'while' loop is used to execute a block of code repeatedly as long as the given condition is true.
@@ -76,5 +75,5 @@ public class whileloop.java {
 
         System.out.println("\nEnd of while loop examples!");
     }
-}
 
+}

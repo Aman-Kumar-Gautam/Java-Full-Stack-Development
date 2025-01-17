@@ -1,5 +1,5 @@
 // File: breakStatement.java
-public class BreakStatementExample {
+public class breakStatement {
     public static void main(String[] args) {
         // Explanation of break statement:
         // The 'break' statement is used to exit a loop or a switch block prematurely.
