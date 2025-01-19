@@ -1,11 +1,11 @@
 // Class to demonstrate instance variables
-public class InstanceVariablesDemo {
+public class InstantanceVariablesDemo {
     // Instance variables
     private String brand; // Brand of the car
     private int year;     // Year of manufacture
 
     // Constructor to initialize instance variables
-    public InstanceVariablesDemo(String brand, int year) {
+    public InstantanceVariablesDemo(String brand, int year) {
         this.brand = brand;
         this.year = year;
     }
@@ -38,7 +38,7 @@ public class InstanceVariablesDemo {
     // Main method
     public static void main(String[] args) {
         // Create an object of the class
-        InstanceVariablesDemo myCar = new InstanceVariablesDemo("Toyota", 2020);
+        InstantanceVariablesDemo myCar = new InstantanceVariablesDemo("Toyota", 2020);
 
         // Accessing instance variables using methods
         myCar.displayInfo(); // Output: Car brand: Toyota, Year: 2020
