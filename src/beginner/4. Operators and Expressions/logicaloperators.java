@@ -2,6 +2,15 @@
 
 // Demonstrates Logical AND (&&)
 public class LogicalOperators {
+    /**
+     * @param args
+     */
+    /**
+     * @param args
+     */
+    /**
+     * @param args
+     */
     public static void main(String[] args) {
         boolean a = true;
         boolean b = false;
