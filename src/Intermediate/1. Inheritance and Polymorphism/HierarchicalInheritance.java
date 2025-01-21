@@ -15,7 +15,7 @@ class Circle extends Shape {
 // Subclass 2 inheriting from Shape
 class Rectangle extends Shape {
     void area() {
-        System.out.println("Area of Rectangle: l × w");
+        System.out.println("Area of Rectangle: l * w");
     }
 }
 
