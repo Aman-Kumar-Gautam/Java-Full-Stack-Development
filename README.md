@@ -50,7 +50,7 @@ Each branch follows this folder structure:
       └── easy
       └── medium
       └── hard
-  /src/projects
+  /projects
   /docs
   /resources
 ```
