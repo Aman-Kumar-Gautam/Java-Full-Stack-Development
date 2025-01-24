@@ -1,7 +1,5 @@
 {
     "java.project.sourcePaths": [
-        "src/Intermediate/2. Interfaces and Packages",
-        "src/Intermediate/1. Inheritance and Polymorphism",
-        "src/Intermediate/4. Collections Framework"
+        "src/Intermediate/3. Exception Handling"
     ]
 }
