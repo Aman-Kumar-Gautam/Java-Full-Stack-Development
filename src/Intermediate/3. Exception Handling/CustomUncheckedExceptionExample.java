@@ -1,4 +1,4 @@
-// Define the custom unchecked exception
+/*// Define the custom unchecked exception
 public class InvalidAgeRuntimeException extends RuntimeException {
     // Constructor accepting message
     public InvalidAgeRuntimeException(String message) {
@@ -29,3 +29,4 @@ public class CustomUncheckedExceptionExample {
         System.out.println("Valid age");
     }
 }
+*/

@@ -1,4 +1,4 @@
-// Define the custom checked exception
+/*  Define the custom checked exception
 public class InvalidAgeException extends Exception {
     // Constructor accepting message
     public InvalidAgeException(String message) {
@@ -29,3 +29,4 @@ public class CustomCheckedExceptionExample {
         System.out.println("Valid age");
     }
 }
+*/
