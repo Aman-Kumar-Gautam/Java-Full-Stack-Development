@@ -4,7 +4,7 @@
 // Lists can contain duplicate elements and provide precise control over where each element is inserted. 
 // The primary implementations of the List interface are ArrayList and LinkedList.
 
-import java.util.List;
+
 
 public class ListInterfaceExample {
 
