@@ -1,0 +1,9 @@
+Basic Git Commands
+Command	Description
+git init	Initialize a new Git repository
+git clone <repo-url>	Clone a remote repository to your local system
+git add <file>	Stage a file for commit
+git commit -m "message"	Commit changes with a message
+git status	Show the status of your working directory
+git log	View commit history
+git diff	Show changes between commits
