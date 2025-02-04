@@ -1,6 +1,7 @@
 {
     "java.project.sourcePaths": [
-        "src/Intermediate/3. Exception Handling",
-        "src/Intermediate/4. Collections Framework"
-    ]
+        "src/Intermediate/6. Input & Output (I&O) in Java",
+        "src/Intermediate/7. Multithreading and Concurrency"
+    ],
+    "java.format.settings.url": ".vscode/java-formatter.xml"
 }
