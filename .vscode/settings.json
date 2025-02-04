@@ -1,6 +1,7 @@
 {
     "java.project.sourcePaths": [
-        "src/Intermediate/5. Generics"
+        "src/Intermediate/6. Input & Output (I&O) in Java",
+        "src/Intermediate/7. Multithreading and Concurrency"
     ],
     "java.format.settings.url": ".vscode/java-formatter.xml"
 }
